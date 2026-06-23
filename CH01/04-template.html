@@ -1,0 +1,42 @@
+<!dotype html>
+<html>
+        <head>
+            <title>3장-자바스크립트 template</title>
+        </head>
+        <body>
+            <p>template문자열연습 페이지 입니다.</p>
+            <div id = "output"></div>
+            
+            <script>
+                
+                 // 템플릿
+                const name = "김유진";
+                const age = 38;
+
+                console.log("이름", name , "나이", age);    
+                 
+                const text = `이름은 ${name}이고, 나이는 ${age} 입니다.`;
+                 // ~밑에 있는 기호사용 
+                console.log(text);   
+
+                               
+                 //연습1 : 오늘 먹은 파스타는 가격이 20000원입니다
+                const food = "파스타";
+                const price = 20000;
+                console.log(`오늘 먹은 ${food}는 가격이 ${price}입니다.`);  
+
+                               
+                 //연습2 : 안녕하세요 김유진입니다. 저는 올해 38살이고, 서울에 살고 있습니다.
+                const city = "서울";
+                console.log( `안녕하세요. ${name}입니다. 저는 올해 ${age}살이고, ${city}에 살고있습니다.`);
+
+                //div output에 출력.
+                const div = document.getElementById("output");
+                console.log(div);
+
+                const selfIntro = `안녕하세요. ${name}입니다. 저는 올해 ${age}살이고, ${city}에 살고있습니다.`;
+                div.textContent = selfIntro;                                
+
+            </script>
+        </body>
+</html>

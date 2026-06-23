@@ -1,0 +1,23 @@
+<!dotype html>
+<html>
+        <head>
+            <title>자기소개</title>
+        </head>
+        <body>
+            <div id = "output"></div>
+            <script>
+                const name = "김유진";
+                const age = 38;
+                const city = "서울";
+                const hobby = "게임";
+
+                const intro = `저는 ${city}에 사는 ${age}살 ${name}입니다. 취미는 ${hobby}입니다.`;              
+                console.log(intro);
+
+                const next = `내년이면 ${age + 1}살이 됩니다.`;
+                console.log(next);
+
+                document.getElementById("output").textContent = `${intro} ${next}`;
+            </script>
+        </body>
+</html>

@@ -1,0 +1,50 @@
+<!dotype html>
+<html>
+        <head>
+            <title>1장-자바스크립트 operators</title>
+        </head>
+        <body>
+            <p>연산자연습 페이지 입니다.</p>
+            <script>
+                //비교연산자: 답은 늘 true or false
+                console.log(10 > 3); //true
+                console.log(10 < 3); //false
+                console.log(5 >= 5); //true
+                console.log(3 !== 5); //true
+                console.log("1-----------------------"); 
+                
+                //===는 값과 종류까지 같아야 true
+                console.log(1 === 1); //true
+                console.log(1 === "1"); //false
+                console.log("2-----------------------"); 
+
+                //==는 값만 체크한다.
+                console.log(1 == "1"); //true
+                console.log("3-----------------------"); 
+
+                //논리연산자: && or || or !
+                // A && B : 둘다 true -> true
+                // A || B : 둘중 하나만 true -> true
+                // !A : 반대
+                const age = 20;
+                const hasTickect = true;
+                console.log(age >= 20 && hasTickect); //true
+                console.log(false || true); //true
+                console.log(!hasTickect); //false
+                console.log("4-----------------------"); 
+
+                console.log(true  && true); //true
+                console.log(true  && false); //false
+                console.log(false || true); //true
+                console.log(!true); //false
+                console.log("5-----------------------"); 
+
+                console.log(!true  && true); //false
+                console.log(!true  && !true); //false  
+                console.log(!true || true); //true
+                console.log(!true || !true); //false           
+                console.log("6-----------------------"); 
+
+            </script>
+        </body>
+</html>

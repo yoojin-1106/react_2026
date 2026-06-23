@@ -1,0 +1,62 @@
+<!dotype html>
+<html>
+        <head>
+            <title>3장-자바스크립트 datatype</title>
+        </head>
+        <body>
+            <p>자료형연습 페이지 입니다.</p>
+            
+            <script>
+              
+               const num = 10; //숫자형
+               const text = "김유진"; // 문자형
+               const isStduent = false; //blooean
+
+               //console.log(num, text, isStduent);
+
+                //숫자형
+               //console.log(typeof num);
+               //console.log(num);
+               
+               // 문자형
+              // console.log(typeof text);
+               //console.log(text);
+               
+               //blooean
+               //console.log(typeof isStduent);
+               //console.log(isStduent);
+              
+                //연습1 : price에 9000
+                let price = 9000;
+                console.log("price :", price, ", typeof :", typeof price);
+                 
+                //연습2 : productName에 해피해킹 
+                productName = "해피해킹";
+                console.log("productName :", productName, ", typeof :", typeof productName);              
+
+                 //연습3 : isStock에 true
+                const isStock = true;
+                console.log("isStock :", isStock, ", typeof :", typeof isStock);
+
+                 console.log("숫자형 데이터 덧셈예시 :", 10 + 5);
+                 console.log("문자형과 숫자형 데이터 덧셈예시 :", "10" + 5);
+                 console.log("문자형 데이터 덧셈예시 :", "10 + 5", ", 10" + "5");
+
+                //연습4 : productName과 price에 출력 예:해피해킹은 9000 원 이다.
+                console.log(productName + "은", price, "원 이다.");
+                console.log(productName + "은 " + price + "원 이다."); 
+                //+로 쓰면 문자형 ,로 쓰면 숫자형 인식~~~~
+                
+                
+                //연습5 : 좋아하는 숫자, 문장, 참/거짓 변수를 직접 하나씩 만들고 typeof 출력
+                const numberLike = 6;
+                const textLike = "인생은 타이밍이다.";
+                const isLike = true;
+                console.log("numberLike :", numberLike, ", typeof :", typeof numberLike
+                    , "textLike :", textLike, ", typeof :", typeof textLike
+                    , "isLike :", isLike, ", typeof :", typeof isLike);
+
+                    
+            </script>
+        </body>
+</html>

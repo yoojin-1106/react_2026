@@ -1,12 +1,34 @@
 <!dotype html>
 <html>
         <head>
-            <title>1장-자바스크립트 콘솔</title>
+            <title>3장-자바스크립트 switch</title>
         </head>
         <body>
-            <p>operators연습 페이지 입니다.</p>
+            <p>switch연습 페이지 입니다.</p>
+            <div id = "output"></div>
             <script>
-                
+                const grade = "B";
+                let message;
+
+                switch (grade){
+                    case "A" : 
+                        message = `아주 잘했어요`;
+                        break;
+
+                    case "B" : 
+                        message = `잘했어요`;
+                        break;
+
+                    case "C" : 
+                        message = `저런`;
+                        break;
+
+                    default :
+                        message = `다시 해봐요`;
+                }
+
+                console.log(message);
+                document.getElementById("output").textContent = message;
             </script>
         </body>
 </html>

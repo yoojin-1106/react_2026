@@ -1,0 +1,29 @@
+<!dotype html>
+<html>
+        <head>
+            <title>2장-자바스크립트 object</title>
+        </head>
+        <body>
+            <p>객체연습 페이지 입니다.</p>
+            <div id = "output"></div>
+            <script>
+                const info = {name : "김유진"
+                                , age : 38
+                                , city : "서울"
+                                , hobby : "게임"};
+                
+                //console.log(info);
+                //console.log(info.name);
+                //id -> city가 특수문자가 있을경우 대괄호 활용
+                //console.log(info["city"]);
+
+                const text = `안녕하세요, 제 이름은 ${info.name} 입니다. 저는 올해 ${info.age}살이고, ${info.city}에 삽니다. 취미는 ${info.hobby} 입니다.`;
+                //console.log(text);
+                document.getElementById("output").textContent = text;    
+
+               info.hairColor = "black";
+               info.email = "ssss@dddd";
+                console.log(info);
+            </script>
+        </body>
+</html>

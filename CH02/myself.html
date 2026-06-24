@@ -1,0 +1,47 @@
+<!dotype html>
+<html>
+        <head>
+            <title>혼자연습</title>
+        </head>
+        <body>
+            <p>if-else, switch연습 페이지 입니다.</p>
+            <div id = "output"></div>
+            <script>
+
+                const score = 83;                
+                let grade = "";
+                let message;
+                
+                if(score >= 90){
+                  grade = "A";
+                }else if(score < 90 && score >= 80){
+                  grade = "B";
+                }else if(score < 80 && score >= 70 ){
+                  grade = "C";
+                }else{
+                  grade = "F";
+                }
+
+                switch (grade){
+                    case "A" : 
+                        message = `아주 잘했어요`;
+                        break;
+
+                    case "B" : 
+                        message = `잘했어요`;
+                        break;
+
+                    case "C" : 
+                        message = `저런`;
+                        break;
+
+                    default :
+                        message = `다시 해봐요`;
+                }
+
+                const text = `점수:${score}점, 학점:${grade}, ${message}.`;
+                const div = document.getElementById("output");
+                div.textContent = text;
+            </script>
+        </body>
+</html>

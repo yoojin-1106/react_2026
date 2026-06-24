@@ -1,0 +1,81 @@
+<!dotype html>
+<html>
+        <head>
+            <title>2장-자바스크립트 return</title>
+        </head>
+        <body>
+            <p>return연습 페이지 입니다.</p>
+            <script>
+
+                /* 
+                    y = f(x)
+                    f : 함수
+                    x : 매개변수
+                    y : 반환값
+                */
+                 function greet(name){
+                    const text = `안녕하세요, ${name}님!`;
+                    //console.log(text);
+                    return text;
+                }
+                const greeting = greet("홍길동");
+                //console.log(greeting);
+
+                //곱하기 함수    
+                 function mutiply(a, b){
+                    return a * b;
+                }
+                const mutiplyResult = mutiply(5, 3);
+                //console.log(mutiplyResult);
+
+                /* *********** */
+                //기본
+                 function add(a, b){
+                    return a + b;
+                }
+                const result = add(5, 3);
+                console.log("기본", result);
+
+                //값에 바로 함수
+                const double1 = function(x){
+                    return x * 3;
+                }
+                console.log("값에 바로", double1(3));
+
+                //화살표 함수
+                const double = (x) => {
+                    return x * 1;
+                } 
+                console.log("화살표", double(3));
+
+                //축약 함수
+                const double2 = (x) => x * 5;
+                console.log("축약", double2(3));
+
+                /* 연습문제 */
+                //연습1 : greet1 을 화살표 함수로 
+                function greet1(name){
+                    return `안녕~ ${name}`;
+                }
+
+                const greet2 = (name) => {  return `안녕~ ${name}`; }
+                console.log("greet2:", greet2("미미"));
+
+                //연습 2 : add1 을 화살표로
+                function add1(x, y, z){
+                    const sum = x * y + z;
+                    const result = sum / 3;
+                    return result;
+                }
+
+                const add2 = (x, y, z) => {
+                    const sum = x * y + z;
+                    const result = sum / 3;
+                    return result;
+                }
+                console.log("add2:", add2(3, 6, 9));
+
+                
+            </script>
+        </body>
+</html>

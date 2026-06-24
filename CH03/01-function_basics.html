@@ -1,0 +1,35 @@
+<!dotype html>
+<html>
+        <head>
+            <title>1장-자바스크립트 function</title>
+        </head>
+        <body>
+            <p>function연습 페이지 입니다.</p>
+            <script>
+                // console.log("function연습 페이지 입니다.");
+                
+                /* function : 키워드 
+                   greet : 함수이름
+                   () : 매개변수
+                   {} : 함수의 실행코드
+                */
+                function greet(name){
+                    const text = `안녕하세요, ${name}님!`;
+                    console.log(text);
+                    //return text;
+                }
+                greet("홍길동");
+                greet("이순신");
+                greet("유관순");
+
+                //연습1 : cheer함수 선언 인자로  name받아 화이팅, 수진!! 출력
+                function cheer(name){
+                    console.log(`화이팅, ${name}!!`);
+                }       
+                cheer("수진");
+                cheer("이순신");
+                cheer("유관순");
+
+            </script>
+        </body>
+</html>

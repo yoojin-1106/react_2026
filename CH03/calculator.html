@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>3장-자바스크립트 calculator</title>
+    </head>
+    <body>
+        <h1>간단한 계산기</h1>
+        <div>
+            <label>숫자를 입력하세요.</label>
+            <input type="text" id = "a" style="width: 100px;" value=""/>
+            <br>
+             <label>숫자를 입력하세요.</label>
+            <input type="text" id = "b" style="width: 100px;" value=""/>
+            <br>
+            <div>
+                <input type="button" value="더하기" style="width: 50px;" onclick="calculator('add');"/>
+                <input type="button" value="빼기" style="width: 50px;" onclick="calculator('minus');"/>
+                <input type="button" value="곱하기" style="width: 50px;" onclick="calculator('mutiply');"/>
+                <input type="button" value="나누기" style="width: 50px;" onclick="calculator('nanugi');"/>
+                <input type="button" value="리셋" style="width: 50px;" onclick="calculator('');"/>
+            </div>
+            <div>
+                 <label>결과</label>
+                <input type="text" id = "result" style="width: 100px;">
+            </div>
+        </div>
+
+        <script>
+
+            let a = 0;
+            let b = 0;
+
+            //함수 시작
+            const calculator = (x) => { 
+                a = Number(document.getElementById("a").value);
+                b = Number(document.getElementById("b").value);
+
+                let result1 = 0;
+                //덧셈
+                if(x == "add"){
+                    result1 = a + b;
+                //뺄셈    
+                }else if(x == "minus"){
+                    result1 = a - b;
+                //곱셈    
+                }else if(x == "mutiply"){
+                    result1 = a * b;
+                //나누기    
+                }else if(x == "nanugi"){
+                    result1 = a / b;
+                //리셋    
+                }else if(x == ""){
+                    document.getElementById("a").value = "";
+                    document.getElementById("b").value = "";
+                    document.getElementById("result").value = "";
+                }
+                
+                const result = document.getElementById("result");
+                result.value = result1; 
+                //return a + b; 
+            }
+
+        </script>
+    </body>
+
+</html>

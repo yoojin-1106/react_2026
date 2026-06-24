@@ -1,0 +1,89 @@
+<!dotype html>
+<html>
+        <head>
+            <title>4장-자바스크립트 for문</title>
+        </head>
+        <body>
+            <p>반복문연습 페이지 입니다.</p>
+            <div id ="output"></div>
+            <script>
+                for(let i = 0; i <= 10; i++){
+                    //console.log(i);
+                }
+
+                let sum = 0;
+                for(let i = 1; i <= 10; i++){
+                    sum = sum + i;
+                }
+                //console.log(sum);
+
+                // 1부터 100까지 더한값
+                let sum1 = 1;
+                for(let i = 1; i <= 100; i++){
+                    sum1 = sum1 + i;
+                }
+
+                // 50부터 500까지 더한값
+                let sum2 = 50;
+                for(let i = 1; i <= 500; i++){
+                    sum2 = sum2 + i;
+                }
+               
+                // 1부터 50까지 짝수만 출력
+                for(let i = 1; i <= 50; i++){
+                    if(i % 2 === 0){
+                        //console.log(i);
+                    }
+                }
+               
+                // 1부터 100까지 홀수만 출력
+                for(let i = 1; i <= 100; i++){
+                    if(i % 2 === 1){
+                       // console.log(i);
+                    }
+                }
+
+                //누적합이 1부터 10까지 더해서 30을 넘으면 그만둔다
+                let sum3 = 0;
+                for(let i = 1; i <= 10; i++){
+                    sum3 = sum3 + i;
+                    if(sum3 > 30){
+                        break;
+                    }
+                    // console.log(i, sum3);
+                }
+
+                //continue 사용 짝수는 넘기고 홀수만
+                let oddSum = 0;
+                for(let i = 1; i <= 10; i++){
+                    if(i % 2 === 0){
+                        continue;
+                    }       
+                    oddSum = oddSum + i;
+                    //console.log(i, oddSum);
+                }
+
+                //구구단 만들기.
+                let dan = 2;
+                let result = 0;
+                let num = 2;
+                let message = "";
+                for(dan = 2; dan < 10; dan++ ){
+                    for(let i = 1; i < 10; i++){
+                       if(num === dan){
+                       // console.log(`*${dan}단입니다. `);
+                        message += `${dan}단입니다.` + '<br>';
+                        num = num + 1;
+                       }
+                        result = dan * i;
+                        //console.log(`${dan} X ${i} = ${result}`);
+                        message += `${dan} X ${i} = ${result}` +'<br>';
+                    }
+                }
+                //console.log(message);
+                if(message != ""){
+                    document.getElementById("output").innerHTML = message;
+                }
+            </script>
+        </body>
+</html>

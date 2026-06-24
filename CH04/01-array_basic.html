@@ -1,0 +1,31 @@
+<!dotype html>
+<html>
+        <head>
+            <title>1장-자바스크립트 array</title>
+        </head>
+        <body>
+            <p>배열 연습 페이지 입니다.</p>
+            <script>
+                const array = [1, 2, 3, 4, 5];
+                const fruits = ["사과", "바나나", "포도"];
+
+                /* 배열 - 값을 순서대로 담는 그릇 0부터 시작한다 */
+                console.log(fruits);
+
+                //인덱스로 값을 꺼낼 수 있다. .length 크기
+                console.log(fruits[1], fruits.length);
+
+                //배열 추가시 .push
+                fruits.push("자두");
+                fruits.push("수박");
+                fruits.push("참외");
+                fruits.push("메론");
+                fruits.push("토마토");
+
+                 console.log(fruits);
+
+                 //마지막 배열 값
+                 console.log(fruits[fruits.length - 1], fruits.length);
+            </script>
+        </body>
+</html>

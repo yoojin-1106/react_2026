@@ -1,0 +1,96 @@
+<!dotype html>
+<html>
+        <head>
+            <title>2장-자바스크립트 filter, find</title>
+        </head>
+        <body>
+            <p>filter, find 연습 페이지 입니다.</p>
+            <div id = "output" style = "font-size:18px; margin-top:12px; line-height: 1.8;"></div>
+            <script>
+                const products = [
+                        {name : "아메리카노", price : 3000},
+                        {name : "카페라떼", price : 4000},
+                        {name : "말차라떼", price : 4500},
+                        {name : "녹차", price : 4000},
+                        {name : "카푸치노", price : 4700},
+                        {name : "수박주스", price : 4200},
+                        {name : "오렌지주스", price : 4200},
+                        {name : "빙수", price : 12000},
+                        {name : "케이크", price : 6000},
+                        {name : "녹차케이크", price : 8000},
+                        {name : "쿠키", price : 4000},
+                ];
+                // console.log(typeof products);
+                //console.log( Array.isArray(products)); // true
+
+                // products에서 가격이 4000원보다 작은 제품 찾기
+                const newProducts = [];
+                for(let i = 0; i < products.length; i++){
+                    if(Number(products[i].price) < 4000){
+                        //console.log(products[i].name);
+                        newProducts.push(products[i]);
+                    }
+                }
+
+                //아래의 filter를 사용해 간단히 나타낼 수 있다. ****배열타입*****  자바스크립트 특성상 typeof는 object 출력
+                const cheap = products.filter((p) => {
+                    return p.price < 4000 
+                });
+                //console.log(cheap, typeof cheap);
+                //console.log( Array.isArray(cheap)); // true 배열 유무****
+
+                // arr.filter ((항목) => { return 조건; })
+                // arr.filter ((항목) => 조건; )
+
+                //문제 1 : products 에서 가격이 1000원 보다 작은 제품
+                const cheap1 = products.filter((p) => p.price < 1000 );
+                //console.log(cheap1, typeof cheap1, Array.isArray(cheap1));
+
+                //문제 2 : products 에서 가격이 5000원 보다 크거나 같은 제품
+                const cheap2 = products.filter((p) => {
+                    return p.price >= 5000 
+                });
+                //console.log(cheap2, typeof cheap2, Array.isArray(cheap2));
+
+                // 문제 3 : products 에서 제품명이 수박주스 인 항목
+                const cheap3 = products.filter((p) => {
+                    return p.name === "수박주스" 
+                });
+                //console.log(cheap3, typeof cheap3, Array.isArray(cheap3));
+
+                // arr.find ((항목) => { return 조건; })
+                // arr.find ((항목) => 조건; )
+                const f1 = products.find((f) => f.price >= 4000);
+                //console.log(f1);
+                
+                // 문제 4 : products 에서 제품명이 파인애플주스 인 항목
+                const f2 = products.find((f) => f.name === "파인애플주스");
+               // console.log(f2);
+                
+                // 문제 5 : products 에서 가격이 6000원 인 항목
+                const f3 = products.find((f) => {
+                    return f.price === 6000
+                });
+                //console.log(f3);
+                
+                // 문제 6 : products 에서 제품명이 말차라떼 인 항목
+                const f4 = products.find((f) => {
+                    return f.name === "말차라떼"
+                });
+                //console.log(f4);
+
+                // filter와 map과 섞어쓰기 *****자주 쓰인다.
+                const f5 = products.filter((f) => f.price > 4000 ).map((m) => `${m.name}(은/는) ${m.price}원 입니다`);
+                console.log(f5);
+
+                // filter와 map과 섞어쓰기 풀어 쓴 버전
+                const m1 = products.filter((f) => f.price > 4000 );
+                const m2 = m1.map((m) => `${m.name}(은/는) ${m.price}원 입니다`);
+                console.log(m1);
+                console.log(m2);
+
+                
+
+            </script>
+        </body>
+</html>

@@ -1,0 +1,100 @@
+<!dotype html>
+<html>
+        <head>
+            <title>1장-자바스크립트 foreach_map</title>
+        </head>
+        <body>
+            <p>foreach 연습 페이지 입니다.</p>
+            <div id = "output" style = "font-size:18px; margin-top:12px; line-height: 1.8;"></div>
+            <script>
+                 const numbers = [ 1, 2, 3, 4];
+
+                 // 연습1 : doubleNumbers에 numbers를 2배한 결과를 넣기. [2, 4, 6, 8] 를 넣기
+                 const doubleNumbers = [];
+                 let result = 0;
+                 for(let i = 0; i < numbers.length; i++){
+                    result =  numbers[i] * 2;
+                    doubleNumbers.push(result);
+                 }
+                // console.log(doubleNumbers);
+
+                 //간단한 또다른 방법
+                 const doubleNumbers2 = numbers.map((m) => m * 2);
+                // console.log(doubleNumbers2);
+                 /* 
+                  배열에 달려있는 기본 함수 map은 배열의 각 항목을 바꿔가면서 새배열을 돌려주는데
+                  map 함수에 인자로 들어간 함수를 호출해서 작업 후에 새 배열로 만들어 준다.
+                 */
+
+                 // 연습 1 : numbers3 상수 정의 numbers의 5배를 넣기
+                 const numbers3 = numbers.map((m) => m * 5);
+                // console.log(numbers3);
+
+                 // 연습 2 : numbers4 상수 정의, {}와 return사용 numbers의 5배를 넣기
+                 const numbers4 = numbers.map((m) => {
+                     return m * 4
+                });
+                // console.log(numbers4);
+
+                 const price = [ 1500, 3000, 4500, 5000, 360000];
+                 // 연습 3 : priceText 상수 정의, {}와 return사용 '원'자를 넣기
+                 const priceText = price.map((m) => {
+                     return m + '원'
+                });
+                // console.log(priceText);
+
+                 const fruits = [ "사과", "바나나", "포도", "오렌지", "수박", "복숭아", "자두", "앵두"];
+                 // 연습 4 : fruitsText 상수 정의, {}와 return사용 '맛있는'자를 넣기
+                 const fruitsText = fruits.map((m) => {
+                     return `맛있는 ${m}`;
+                });
+                // console.log(fruitsText);
+
+                 // 연습 4 : fruitsText 상수 정의, {}와 return사용 '맛있는'자를 넣기
+                 const fruitsText2 = fruits.map((m) => {
+                     return `맛있는 ${m.toLocaleString()}`;
+                });
+                // console.log(fruitsText2);
+
+                 // 연습 5 : users 에서 name만 names 에 넣기
+                 const users = [
+                        {name : "유진", score : 80},
+                        {name : "수진", score : 90},
+                        {name : "지아", score : 85},
+                        {name : "태은", score : 95},
+                        {name : "소영", score : 60},
+                        {name : "은지", score : 40}
+                    ];
+                 // 연습 4 : names 상수 정의, {}와 return사용 '이름만'를 넣기
+                 const names = users.map((m) => {
+                     return m.name;
+                });
+                 //console.log(names);
+
+                // 연습 5 : scores 상수 정의, {}와 return사용 'score'를 넣기
+                 const scores = users.map((m) => {
+                     return m.score;
+                });
+                 //console.log(scores);
+
+                // forEach
+                 users.forEach((u) => { 
+                    //console.log(u); 
+                });
+               /*   
+                    와 같은 기능 
+                    for(let i = 0; i < users.length; i++){
+                        console.log(users);
+                    }
+                    
+                    const newUsers.forEach((x) => x.name )  쓸수없다.
+                */
+
+                // 연습 6 : temps 뒤에 '도'를 넣기 i : 배열 인덱스
+                const temps = [ -10, -5, 0, 5, 10, 20, 30, 40];
+                temps.forEach((t, i) => console.log(`${t}도`, i));
+
+                
+            </script>
+        </body>
+</html>

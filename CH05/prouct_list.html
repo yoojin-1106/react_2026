@@ -1,0 +1,72 @@
+<!dotype html>
+<html>
+        <head>
+            <title>1장-자바스크립트 </title>
+        </head>
+        <body>
+            <p> 연습 페이지 입니다.</p>
+            <script>
+                const products = [
+                        {name : "아메리카노", price : 1500, count : 2, category : "음료"},
+                        {name : "카페라떼", price : 4000, count : 5, category : "음료"},
+                        {name : "말차라떼", price : 4500, count : 8, category : "음료"},
+                        {name : "녹차", price : 4000, count : 3, category : "음료"},
+                        {name : "카푸치노", price : 4700, count : 12, category : "음료"},
+                        {name : "수박주스", price : 4200, count : 15, category : "음료"},
+                        {name : "오렌지주스", price : 4200, count : 17, category : "음료"},
+                        {name : "팥빙수", price : 12000, count : 0, category : "빙수"},
+                        {name : "망고빙수", price : 18000, count : 0, category : "빙수"},
+                        {name : "치즈케이크", price : 6000, count : 10, category : "디저트"},
+                        {name : "녹차케이크", price : 8000, count : 1, category : "디저트"},
+                        {name : "쿠키", price : 4000, count : 6, category : "디저트"},
+                ];
+
+                // 1. category가 음료인 상춤만 새배열로
+                const categorys = products.filter((x) => { 
+                    return x.category === "음료"; 
+                });
+                console.log(categorys);
+
+                // 2. 각 음료의 이름만
+                const name = products.filter((x) => x.category === "음료").map((x) => x.name);
+                console.log(name);
+
+                // 3. 음료 가격을 하나로 모아 합계, 초기값은0
+                const totalPrice = products.map((x) => x.price);
+                const total = totalPrice.reduce((acc, cur) => {return acc + cur}, 0);
+                console.log(total);
+
+                // 4. 가격을 10%할인된 가격
+                const discount = products.map((x) => {
+                    return x.price * 0.9
+
+                });
+                console.log(discount);
+
+                //이거~~~~~*******************************원본 유지
+                const discount2 = products.map((x) => {
+                    return {...x, discount : x.price * 0.9}
+
+                });
+                console.log(discount2);
+
+                // 5. 디저트만 골라 가격합계
+                const desert = products.filter((x) => x.category === "디저트").map((x) => x.price);
+                const desertTotalPrice = desert.reduce((acc, cur) => {return acc + cur}, 0);
+                console.log(desertTotalPrice);
+
+                //*************cur.price 로 인자 가져옴
+                const desertTotal = products.filter((x) => x.category === "디저트").reduce((acc, cur) => {return acc + cur.price}, 0);
+                console.log(desertTotal);
+
+                // 6. 원본 그대로 샌드위치 추가, 5500 식사
+                const list = {name : "샌드위치", price : 5500, count : 8, category : "식사"};
+                const products2 = [...products, list];
+                 console.log(products2);
+                 //혹은
+                 products.push(list);
+                 console.log(products);
+
+            </script>
+        </body>
+</html>

@@ -1,0 +1,80 @@
+<!dotype html>
+<html>
+        <head>
+            <title>3장-자바스크립트 reduce</title>
+        </head>
+        <body>
+            <p>reduce 연습 페이지 입니다.</p>
+            <div id = "output" style = "font-size:18px; margin-top:12px; line-height: 1.8;"></div>
+            <script>
+                const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+                let sum = 0;
+                for(let i = 0; i < numbers.length; i++){
+                    sum += numbers[i];
+                }
+                //console.log(sum);
+
+                /* 
+                    reduce 함수 : 배열 항목을 하나씩 돌면서 최종값으로 연산해 준다.
+                    arr.reduce((acc, cur) => { return acc + cur; }, reduce초기값);
+                    arr -> accmulator : 지금까지 모인값
+                    cur -> current : 현재값
+                    초기값 : acc의 초기값
+                    return arr + cur
+                */
+               const numbers2 = numbers.reduce((acc, cur) => {
+                   // console.log("acc :",acc, "cur :", cur); 
+                    return acc + cur; 
+                }, 0);
+                //console.log(numbers2); 
+
+
+                const fruitA = ["사과", "바나나"];
+
+                // 1) push -- 원본 배열을 직접 바꾸어 요소 추가
+                fruitA.push("포도");
+                //console.log(fruitA); 
+
+                // 2) 스프레드 
+                const fruitB = ["사과", "바나나"];
+                const added = [...fruitB, "오렌지"];
+                const added1 = [fruitB, "오렌지"];
+                //console.log(added); 
+                //console.log(added1); 
+
+                // 3) 삭제 
+                const fruitC = ["사과", "바나나", "포도", "오렌지"];
+                const removed = fruitC.filter((x) => x !== "바나나");
+                //console.log(removed); 
+                const updated = fruitC.map((x) => x + "!");
+                //console.log(updated); 
+
+                // fruits와 more 합치기
+                const fruits = ["사과", "바나나"];
+                const more = ["포도", "오렌지"];
+                const all = [];
+                const added2 = [...fruits, ...more];
+                //console.log(added2); 
+
+                
+
+
+                const products = [
+                        {name : "아메리카노", price : 3000, count : 2},
+                        {name : "카페라떼", price : 4000, count : 5},
+                        {name : "말차라떼", price : 4500, count : 8},
+                        {name : "녹차", price : 4000, count : 3},
+                        {name : "카푸치노", price : 4700, count : 12},
+                        {name : "수박주스", price : 4200, count : 15},
+                        {name : "오렌지주스", price : 4200, count : 17},
+                        {name : "빙수", price : 12000, count : 0},
+                        {name : "케이크", price : 6000, count : 10},
+                        {name : "녹차케이크", price : 8000, count : 1},
+                        {name : "쿠키", price : 4000, count : 6},
+                ];
+
+
+            </script>
+        </body>
+</html>

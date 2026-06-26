@@ -1,11 +1,29 @@
 <!dotype html>
 <html>
         <head>
-            <title>1장-자바스크립트 </title>
+            <title>자바스크립트 </title>
         </head>
         <body>
-            <p> 연습 페이지 입니다.</p>
+            <p>async_await 연습 페이지 입니다.</p>
             <script>
+                //https://jsonplaceholder.typicode.com/posts
+
+                async function userLoad() {
+                    const url = "https://jsonplaceholder.typicode.com/posts";
+                    try {
+                        const response = await fetch(url);
+                        const posts = await response.json();
+                        //console.log(posts);
+                        const users = await posts.forEach((u) => {
+                            console.log(`${u.title} -> ${u.body}`);
+                        });
+
+                    } catch (e) {
+                        console.error(e);
+                    }
+                }
+
+                userLoad();
             </script>
         </body>
 </html>

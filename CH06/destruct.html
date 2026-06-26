@@ -1,0 +1,106 @@
+<!dotype html>
+<html>
+        <head>
+            <title>자바스크립트 destruct</title>
+        </head>
+        <body>
+            <p>구조분해 연습 페이지 입니다.</p>
+            <script>
+                const color = ["red", "green", "blue", "orange", "white", "black"];
+
+                //red, green 출력
+                const filterColor = color.filter((x) => (x === "red") || (x === "green"));
+                console.log(filterColor);
+
+                //구조분해
+                const [red, green] = color;
+                console.log(red, green);
+
+                const [first, sencound] = color;
+                console.log(first, sencound);
+              
+                const [x, y] = color;
+                console.log(x, y);
+
+                const nums = [10, 20, 30, 40, 50];
+
+                //배열의 구조분해 할당으로 a, b에 10, 20 넣기.
+                const [a, b] = nums;
+                console.log(a, b);
+
+                //배열의 구조분해 할당으로 q,e에 10, 30 넣기.
+                const [q, , e] = nums;
+                console.log(q, e);
+
+                //a1제외한 나머지가 rest배열에 담김  console.log(rest); 와 console.log(...rest); 모양 다름 중요***
+                const [a1, ...rest] = nums;
+                console.log(rest);
+                console.log(...rest);
+
+                const orders = ["아메리카노", "카페라떼", "녹차", "케이크", "두쫀쿠", "버터떡"];
+
+                // 1) 첫번째와 두번째 출력
+                const [firstOrder, sencoundOrder] = orders;
+                console.log(firstOrder, sencoundOrder);
+
+                // 2) 첫번째와 마지막 출력
+                const [firstOrders,,,,,lastOrders] = orders;
+                console.log(firstOrders, lastOrders);
+
+                // 3) 첫번째와 나머지 출력
+                const [firstAa, ...lastOrder] = orders;
+                console.log(firstAa, lastOrder);
+
+                //객체도 가능하다.
+
+                const products = [
+                        {productName : "아메리카노", price : 1500, count : 2, category : "음료"},
+                        {productName : "카페라떼", price : 4000, count : 5, category : "음료"},
+                        {productName : "말차라떼", price : 4500, count : 8, category : "음료"},
+                        {productName : "녹차", price : 4000, count : 3, category : "음료"},
+                        {productName : "카푸치노", price : 4700, count : 12, category : "음료"},
+                        {productName : "수박주스", price : 4200, count : 15, category : "음료"},
+                        {productName : "오렌지주스", price : 4200, count : 17, category : "음료"},
+                        {productName : "팥빙수", price : 12000, count : 0, category : "빙수"},
+                        {productName : "망고빙수", price : 18000, count : 0, category : "빙수"},
+                        {productName : "치즈케이크", price : 6000, count : 10, category : "디저트"},
+                        {productName : "녹차케이크", price : 8000, count : 1, category : "디저트"},
+                        {productName : "쿠키", price : 4000, count : 6, category : "디저트"},
+                ];
+
+                const [productName, category] = products;
+                console.log(productName, category);
+                console.log(productName.productName, category.productName);
+
+
+                 //명명규칙은 {}의 키값과 일치해야 한다. 배열[] 처럼 ,,,을 할 필요없이 키값으로 지정해서 꺼낸다.  
+                const users = {userName : " 김유진", age : 38, city : "서울", hobby : "게임"};
+                const {userName, age, hobby} = users;
+                console.log(userName, age, hobby);
+
+                // "민준",  "골드" 출력 -> 민준 골드
+                const member = {memberName : "민준", grade : "골드", point : 1200, favotite : "까페라떼"};
+                const {memberName, grade} = member;
+                console.log(memberName, grade);
+
+                //drink, receiptPrice, tip출력 -> 아메리카노 3000 undefined 
+                //drink, receiptPrice, tip = 0출력 -> 아메리카노 3000 0 
+                const receipt = {drink : "아메리카노", receiptPrice : 3000};
+                const {drink, receiptPrice, tip = 0} = receipt;
+                console.log(drink, receiptPrice, tip);
+
+                //응용버전 *******객체 구조분해할당으로 객체 받기.
+                function takeOrder({drink, size = "Regular"}){
+                    return `${size} ${drink} 주문접수`;
+                };
+
+                //예전 베이직
+                function takeOrder2(order){
+                    return `${order.size} ${order.drink} 주문접수`;
+                };
+                
+                const order = {drink : "수박주스"} 
+                console.log(takeOrder(order));
+            </script>
+        </body>
+</html>

@@ -1,0 +1,58 @@
+<!dotype html>
+<html>
+        <head>
+            <title>자바스크립트 option_null병합</title>
+        </head>
+        <body>
+            <p>option 연습 페이지 입니다.</p>
+            <script>
+
+                const userWithAddress = {
+                    name : "수진"
+                   , address : {city : "서울", zipcode : "02123"}
+                };
+
+                const userNoAddress = {
+                    name : "민지"
+                };
+
+                //수진의 도시
+                console.log(userWithAddress.address.city);
+
+                /** 
+                    옵셔널 체이닝 (.?) -> 없을 수도 있는 값을 안전하게 꺼낼때 (에러없이)
+                    userWithAddress.address.city에서 처럼 . 노테이션으로 객체 깊이 들어갈때
+                    중간에 address가 없으면 TypeError 발생하면 프로그램이 중단.
+                    이를 처리하기 위해 if문을 썼었지만 깊이가 길어질 수록 if문은 불리 ( 예외가 생김)
+                    userNoAddress.address?.city 을 사용하면 없는 경우 undefined를 반환, 에러없이 멈추지 않고 진행.
+                **/
+                
+                //최신방식
+                console.log(userNoAddress.address?.city); // undefined
+
+                //예전 방식
+                if(userNoAddress.address !== undefined){
+                    console.log(userNoAddress.address.city);
+                }
+
+                // 혜린의 bio를 출력
+                const memberWithBio = {
+                                    name : "다니엘"
+                                 , profile : {bio : "까페 단골입니다."}
+                                };
+
+                const memberNoBio = {name : "혜린"};
+                console.log(memberNoBio.profile?.bio); // undefined 
+                
+                //null병합, undefined, null일 경우 ?? 이후 값을 출력.
+                console.log(memberNoBio.profile?.bio ?? "자기소개없음"); // 자기소개없음 
+                
+                console.log(undefined ?? "undefined"); // "" 출력 
+                console.log(null ?? "null"); // "" 출력 
+                console.log("" ?? "빈값은 적용 안됨"); // "" 출력 
+
+
+
+            </script>
+        </body>
+</html>

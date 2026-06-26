@@ -6,6 +6,46 @@
         <body>
             <p> 연습 페이지 입니다.</p>
             <script>
+                //https://jsonplaceholder.typicode.com/users
+                
+                async function loadUser() {
+                    try {
+                        const url = "https://jsonplaceholder.typicode.com/users";
+                        const response = await fetch(url);
+                        const users = await response.json();
+                        console.log(users, `총 ${users.length}명 발견`);
+
+                        // 문제1 : 유저 이름, 이메일출력 forEach
+                        const userNameEmail = await users.forEach((u) => {
+                            console.log(`${u.name}, ${u.email}`);
+                        });
+ 
+                        // 문제2 : 유저 이름과 회사 이름
+                        const userNameCompany = await users.map((u) => {
+                            return `${u.name}, ${u.company?.name} `;
+                        });
+                        console.log(userNameCompany);
+
+                        //문제3 :  유저 id가 5보다 큰 유저 대상 이름과 전화번호를 이름(전화번호)
+                        const userIDPhone = await users.filter((u) => {
+                            return u.id >= 5;
+                        }).map((u) => {
+                            return { name : u.name, phone : u?.phone};
+                        });
+                        console.log(userIDPhone);
+
+                        /* 
+                            문제4 05-post.html 생성. 
+                            "https://jsonplaceholder.typicode.com/users" 데이터 가져오기
+                            posts담기
+                            forEach로 title, body 를 콘솔로
+                        */
+                    } catch (e) {
+                        console.error(e);
+                    }
+                }
+
+                loadUser();
             </script>
         </body>
 </html>

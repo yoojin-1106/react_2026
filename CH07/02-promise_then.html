@@ -1,11 +1,42 @@
 <!dotype html>
 <html>
         <head>
-            <title>1장-자바스크립트 </title>
+            <title>2장-자바스크립트 promise_then</title>
         </head>
         <body>
-            <p> 연습 페이지 입니다.</p>
+            <p>비동기 promise 연습 페이지 입니다.</p>
+            <div id = "result">결과를 기다리는 중</div>
             <script>
+                // https://jsonplaceholder.typicode.com/user/1 공개된 url 몇가지 더비 API를 제공하는 사이트
+                const fetchPromise = fetch("https://jsonplaceholder.typicode.com/users/1");
+              
+                //기본모양
+                fetchPromise.then((response) => {
+                     //성공함수
+                    console.log(response.json());
+                    console.log("성공");
+                }).catch(() => {
+                    //실패함수
+                    console.log("실패");
+                }).finally(() => {
+                    //최종함수
+                    console.log("최종");
+                });  
+                
+                
+                console.log(fetchPromise);
+                /* 
+                    Promise : 나중에 결과를 돌려줄께 라는 약속을 담은 객체
+                    시간이 걸리는 일 (fetch, 파일읽기, DB불러오기)를 결과가 언제 온다 라는 약속을 객체로 리턴함.
+
+                    ******3가지 status
+                    pending : 진행중 
+                    fulfilled : 성공! 콜백으로 .then() 실행
+                    rejected : 실패! 콜백으로 .catch() 실행
+                    finally : 성공과 실패 무관하게 무조건 제일 마지막에 실행
+                */
+
+                
             </script>
         </body>
 </html>

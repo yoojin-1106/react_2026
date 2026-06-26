@@ -1,11 +1,26 @@
 <!dotype html>
 <html>
         <head>
-            <title>1장-자바스크립트 </title>
+            <title>1장-자바스크립트 sync_vs_async</title>
         </head>
         <body>
-            <p> 연습 페이지 입니다.</p>
+            <p>동기, 비동기 연습 페이지 입니다.</p>
             <script>
+                console.log(1, "첫번째");
+                //ms시간/ 1000 : 1초, 100 : 0.1초
+                setTimeout(() => {
+                    console.log(3, "timeout");
+                }, 100);
+
+                console.log(2, "마지막");
+
+                /* 
+                    동기 vs 비동기 코드가 실행하는 순서
+                    동기 : 위에서 순차적으로 한줄식 실행. 앞줄이 끝나야 뒷줄이 실행.
+                    비동기 : 위에서부터 순차적으로 진행하다 나중에 해야 하는것은 별도로 실행하며 지나침. 나중에 끝난 작업은 콜백을 통해 실행
+                    setTimeout() : 매개변수로 들어간 함수(콜백)을 두번째 인자인 100ms 뒤에 실행.(비동기)
+                */
+
             </script>
         </body>
 </html>

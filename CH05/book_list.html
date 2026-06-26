@@ -1,0 +1,49 @@
+<!dotype html>
+<html>
+        <head>
+            <title>자바스크립트 </title>
+        </head>
+        <body>
+            <p>book_list 연습 페이지 입니다.</p>
+            <script>
+                const books = [
+                        {title : "해리포터", price : 1500, count : 2, genre : "판타지", page : 320},
+                        {title : "1984", price : 14000, count : 5, genre : "SF", page : 328},
+                        {title : "어린왕자", price : 14500, count : 8, genre : "동화", page : 220},
+                        {title : "데미안", price : 14000, count : 3, genre : "소설", page : 220},
+                        {title : "삼체", price : 14700, count : 12, genre : "SF", page : 250},
+                        {title : "헤일메리", price : 14200, count : 15, genre : "SF", page : 1000},
+                        {title : "셜록홈즈-시리즈", price : 14200, count : 17, genre : "추리", page : 2020},
+                        {title : "아르센뤼팡", price : 12000, count : 0, genre : "추리", page : 500},
+                        {title : "피를마시는새", price : 16000, count : 10, genre : "판타지", page : 2000},
+                        {title : "반지의제왕", price : 18000, count : 1, genre : "판타지", page : 5000},
+                        {title : "인간실격", price : 14000, count : 6, genre : "소설", page : 300},
+                ];
+
+                // 1. genre가 SF인 상품만 새배열로
+                const genres = books.filter((x) => { 
+                    return x.genre === "SF"; 
+                });
+                console.log(genres);
+
+                // 2. SF소설을 필터링하여 제목만 새배열로
+                const title = books.filter((x) => x.genre === "SF").map((x) => x.title);
+                console.log(title);
+
+                // 3. SF소설 총 페이지수 하나로 모아 합계, 초기값은0
+                const totalPages = books.filter((x) => x.genre === "SF").reduce((acc, cur) => {return acc + cur.page}, 0);
+                console.log(totalPages);
+
+                // 4. SF소설의 책 제목과 페이지수를 새배열로 ["1984 (328p)", "해리포터 (320p)"]
+                const newBooks = books.filter((x) => x.genre === "SF").map((x) => `${x.title} (${x.page}p)`);
+                console.log(newBooks);
+
+                // 5. 원본 그대로 눈물을 마시는 새, 판타지, 800 추가
+                const list = {title : "눈물을 마시는 새", price : 15500, count : 8, genre : "판타지", page : 2300};
+                const books2 = [...books, list];
+                 console.log(books2);
+
+
+            </script>
+        </body>
+</html>

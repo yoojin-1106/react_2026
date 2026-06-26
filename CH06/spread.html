@@ -1,0 +1,39 @@
+<!dotype html>
+<html>
+        <head>
+            <title>자바스크립트 spread</title>
+        </head>
+        <body>
+            <p>스프레드 연습 페이지 입니다.</p>
+            <script>
+                const fruit = ["사과", "바나나"];
+                const more = ["포도", "귤"];
+
+                // fruit와 more 합치기 -> ['사과', '바나나', '포도', '귤']
+                const all = [...fruit, ...more];
+                //console.log(all);
+
+                // "체리" 추가 -> ['사과', '바나나', '체리']
+                const withCherry = [...fruit, "체리"];
+                //console.log(withCherry);
+
+                const user = {name : "수진", age : 20};
+                //수진 나이 30으로
+                const order = {...user, age : 30};
+                //console.log(order);
+
+                //함수
+                function sum(...nums){
+                    //...nums로 들어오면 array가 된다
+                    // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                    //console.log(nums);
+                    return nums.reduce((acc, n) => acc + n, 0)
+                };
+                //console.log(sum(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
+
+                const scores = [90, 80, 76, 30, 100];
+                const [top1, ...rest] = scores;
+                console.log(top1, rest);
+            </script>
+        </body>
+</html>

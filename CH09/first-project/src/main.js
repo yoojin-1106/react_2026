@@ -4,8 +4,124 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import { setupCounter } from './counter.js'
 
-document.querySelector('#app').innerHTML = `
-<section id="center">
+/* http://www.github/mhb8436/my-react2026 */
+
+/* 데이터 작업 영역 */
+let todos = [];
+let nextId = 1;
+
+/*
+  할일 아이템 : {id:number, text:String, done:boolean} 
+*/
+function addTodo(text){
+  const todo = {id : nextId
+            , text : text
+            , done : false};
+  nextId = nextId + 1;
+  todos = [...todos, todo];
+  // return todos;
+};
+
+/* 할일 완료 함수 */
+function toggleToDo(id){
+  todos = todos.map((todo) => todo.id === id ? {...todo, done : !todo.done} : todo );
+};
+
+/* 할일 삭제 함수 */
+function removeToDo(id){
+  todos = todos.filter((todo) => todo.id !== id);
+};
+
+/* 할일 목록 불러오기 함수 */
+function getTodos(){
+  return [...todos];
+};
+
+/* 할일 false count 함수 */
+function reminingTodos(){
+  const remain = todos.filter((todo) => todo.done === false);
+  return remain.length;
+};
+
+
+/* 화면 작업 영역 */
+const app = document.querySelector("#app");
+const hello = document.createElement("p");
+
+hello.textContent = "환영합니다.";
+app.appendChild(hello);
+
+const toDoSection = document.createElement("section");
+app.appendChild(toDoSection);
+
+toDoSection.innerHTML = `
+  <h3>To Do List</h3>
+  <p>To Do 예제</p>
+  <div>
+    <input type="text" id="toDoInput" placeholder="예: 듀어링고 말하기 10분" title="할일을 입력하세요."/>
+    <button type="button" id="addBtn">추가</button>
+  </div>
+
+  <p id="remining"></p>
+  <ul id="toDoList"></ul>
+`;
+ 
+
+const input = toDoSection.querySelector("#toDoInput");
+const addBtn = toDoSection.querySelector("#addBtn");
+const remining = toDoSection.querySelector("#remining");
+const toDoList = toDoSection.querySelector("#toDoList");
+
+ addBtn.addEventListener("click", () => {
+    addTodo(input.value);
+    input.value = "";
+    input.focus();
+    refresh();
+}); 
+
+/* 랜더링 */
+function render(todos, remining){
+  toDoSection.querySelector("#remining").textContent = `남은 할일 개수는 ${remining} 개`;
+
+  toDoList.innerHTML = ""; // 
+  todos.forEach((todo) => {
+    const li = document.createElement("li");      
+    const textSpan = document.createElement("span");
+    
+    textSpan.textContent = todo.text;
+    textSpan.style.textDecoration = todo.done ? "line-through" : "none";
+
+    textSpan.addEventListener("click", () => {
+        toggleToDo(todo.id);
+        refresh();
+      });
+  
+      const delBtn = document.createElement("buuton");
+      delBtn.textContent = "삭제";
+      delBtn.style.marginLeft = "8px";
+      delBtn.addEventListener("click", () => {
+        removeToDo(todo.id);
+        refresh();
+      });
+
+    li.append(textSpan, delBtn);
+    toDoList.appendChild(li);
+  });
+};
+
+
+function refresh(){
+  render(getTodos(), reminingTodos());
+};
+
+refresh();
+//document.querySelector('#app').innerHTML = ``
+
+//setupCounter(document.querySelector('#counter'))
+
+
+
+/* <section id="center">
   <div class="hero">
     <img src="${heroImg}" class="base" width="170" height="179">
     <img src="${javascriptLogo}" class="framework" alt="JavaScript logo"/>
@@ -54,7 +170,4 @@ document.querySelector('#app').innerHTML = `
 </section>
 
 <div class="ticks"></div>
-<section id="spacer"></section>
-`
-
-setupCounter(document.querySelector('#counter'))
+<section id="spacer"></section> */

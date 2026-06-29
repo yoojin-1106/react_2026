@@ -1,0 +1,87 @@
+<!dotype html>
+<html> <!-- 문서요소 전체를 감싼다. -->
+        <head> <!-- 제목, 인코딩 정보, 스타일 등 화면 밖 정보 관리 -->
+            <title>1장-자바스크립트 select</title> <!-- 제목 -->
+            <style>
+                body { font-family: sans-serif; padding: 24px; font-size: 16px; }
+                .box { font-size: 18px; background-color: burlywood; }
+                #name { font-size: 36px; background-color: aqua; }
+            </style> <!-- 디자인 요소 정의(색, 패딩, 마진) css 문법정의 -->
+            <script>
+                
+            </script> <!-- 자바스크립트 코드를 넣는다. -->
+        </head>
+        <body> <!--  -->
+            <h3>안녕하세요 오늘은 월요일 입니다.</h3> <!-- 제목태그 h1~h6 숫자가 커질수록 글자가 작아진다. -->
+            <p id="message"><strong>select</strong> 연습 페이지 입니다. <br> 오늘 점심은 도시락입니다.<br> <em>점심시간</em>은 12시30분 부터 13시 30분까지 입니다.</p> <!-- 내용태그 -->
+            <a href = "https://www.naver.com">네이버</a> <!-- a태그는 링크 다른 페이지로 이동 -->
+           <br>
+           <!--  <img src="https://namu.wiki/w/%EA%B5%AD%EB%B0%A5"/> -->
+            <ul>
+                <li>메뉴1: 아메리카노</li>
+                <li>메뉴2: 카푸치노</li>
+                <li>메뉴3: 말차라떼</li>
+                <li>메뉴4: 수박주스</li>
+            </ul> <!-- 목록태그 -->
+
+            <ul>
+                <ol>
+                    <li>메뉴: 아메리카노</li>
+                    <li>메뉴: 카푸치노</li>
+                    <li>메뉴: 말차라떼</li>
+                    <li>메뉴: 수박주스</li>
+                </ol>
+            </ul> <!-- 번호있는 목록 -->
+            
+            <ul id="list"></ul> 
+
+            <label for="name">이름</label>
+            <input type="text" id="name" placeholder="예: 홍길동" title="이름을 입력하세요." style="width: 200px;" />
+            <button type="button">인사하기</button>
+            <button type="button" id="greetBtn">인사</button>
+            <div class="box">
+                <p>내용</p>
+            </div>
+
+            <table>
+                <thead>
+                </thead>
+                <tbody>
+                    <th>
+                        <tr></tr>
+                        <td></td>
+                    </th>
+                </tbody>
+            </table>
+            <script>
+                /* 
+                    document 는 자바스크립트에서 사용할 수 있는 이 문서 전체의 객체
+                    querySelector 제공해주는데 id, class를 이용해서 문서내의 요소(element)에 접근
+                */
+                const message = document.querySelector("#message");
+                const box = document.querySelector(".box");
+                const nameInput = document.querySelector("#name");
+                const list = document.querySelector("#list");
+                
+                //console.log(message);
+                //console.log(box);
+                //console.log(nameInput);
+                console.log(list);
+                
+                message.textContent = "점심은 국밥이 어때요?";
+                message.style.color = "orange";
+                message.style.fontSize = "40px";
+
+                const greetBtn = document.querySelector("#greetBtn");
+                greetBtn.addEventListener("click", () => {
+                    const name = nameInput.value;
+                    message.textContent = `안녕하세요. ${name} 입니다.`;
+                    const li = document.createElement("li");
+                    li.textContent = `안녕하세요~ ${name}님`;
+                    list.append(li);
+
+                });
+
+            </script> <!-- 자바스크립트 코드를 넣는다. -->
+        </body>
+</html>

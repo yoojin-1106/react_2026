@@ -4,7 +4,9 @@ function Greeting({name : name}){
     // 일종의 컴포넌트
 
     return(
-        <p>안녕하세요, <strong>{name}</strong>님 ! react에 입문하신 것을 축하드립니다.</p>
+        <div className="greeting">
+            <p>안녕하세요, <strong>{name}</strong>님 ! react에 입문하신 것을 축하드립니다.</p>
+        </div>
     );
 }
 

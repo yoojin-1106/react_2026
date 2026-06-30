@@ -10,6 +10,7 @@ function App() {
 /* 
    {num의 값을 변경시켜주고나서 }
    const [현재값, 값을 바꾸는 함수] = useState(0) -> 0:초기값
+   useState 숫자 문자 다 가능
 */
 
  let count = 0;
@@ -32,6 +33,14 @@ function initNum(){
   setNum(0);
 }
 
+
+ const [name, setName] = useState("");
+ let countName = 0;
+
+ function hiname(){
+    setName(`안녕 ${name}`);
+ }
+
   return (
     <>
       <section className='section'>
@@ -47,7 +56,14 @@ function initNum(){
            
             <button className='skill-badge' onClick={addNum}> + 1 버튼</button>
             <button className='skill-badge' onClick={minusNum}> - 1 버튼</button>
-            <button className='skill-badge' onClick={initNum}> 0 </button>
+            <button className='skill-badge' onClick={initNum}> 0 버튼</button>
+          </div>
+
+          <div className='greeting'>
+            <h3>useState 사용 변수 증가</h3>
+            <p>useState 현재값 : <strong>{name}</strong>ㅇㅇㅇ</p>
+           
+            <button className='skill-badge' onClick={hiname}> 안녕 </button>
           </div>
 
       </section>

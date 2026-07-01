@@ -4,6 +4,7 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
 
+
 function App() {
  const [num, setNum] = useState(0);
 //num 값, setNum는 함수
@@ -61,10 +62,11 @@ function initNum(){
 
           <div className='greeting'>
             <h3>useState 사용 변수 증가</h3>
-            <p>useState 현재값 : <strong>{name}</strong>ㅇㅇㅇ</p>
+            <p><strong>{name}</strong>ㅇㅇㅇ아</p>
            
             <button className='skill-badge' onClick={hiname}> 안녕 </button>
           </div>
+
 
       </section>
     </>

@@ -23,24 +23,39 @@ function ToDoApp(){
     const handleAdd = (e) => {
         e.preventDefault(); 
         // form이 onSubmit 할때 화면을 리로딩 하는데 e.prevent.default()를 선언하면 멈춘다.
-        const newTodo = {
-              id : crypto.randomUUID()
-            , text : text
-            , done : false
-        };
-        //setTodos((prev) => [...newTodo]);
-        setTodos([...todos, newTodo]);
-        setText("");
+        if(!text){
+            alert("할일을 입력하세요.");
+            return;
+        }else{
+            const newTodo = {
+                id : crypto.randomUUID()
+                , text : text
+                , done : false
+            };
+            //setTodos((prev) => [...newTodo]);
+            setTodos([...todos, newTodo]);
+            setText("");
+        }
+
     }
 
     const handleToggle = (id) => {
         setTodos((prev) => prev.map((todo) => {
-            console.log(id);
-            console.log(todo.id);
-            console.log(todo.done);
+            //console.log(id);
+            //console.log(todo.id);
+            if(todo.id === id){
+                console.log("id : ", id, ", todo.id : ", todo.id, ", done: ", todo.done);
+
+            }
            return todo.id === id ? {...todo, done : !todo.done} : todo
         }))
     }
+
+    const handleDelete = (id) => {
+        setTodos((prev) => prev.filter((todo) => {
+           return todo.id !== id
+        }))
+    } 
 
     return(
         <>
@@ -53,7 +68,10 @@ function ToDoApp(){
                 <ul className="todo-list">
                     {
                       todos.map((t) => 
-                        <ToDoItem key={t.id} todo={t} onToggle={handleToggle}/>
+                        <ToDoItem key={t.id} 
+                                  todo={t} 
+                                  onToggle={handleToggle} 
+                                  onDelete={handleDelete}/>
                        )  
                     }
 

@@ -45,7 +45,6 @@ function ToDoApp(){
             //console.log(todo.id);
             if(todo.id === id){
                 console.log("id : ", id, ", todo.id : ", todo.id, ", done: ", todo.done);
-
             }
            return todo.id === id ? {...todo, done : !todo.done} : todo
         }))

@@ -1,0 +1,265 @@
+/* 12장 기본 스타일 */
+
+:root {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto,
+    "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  line-height: 1.6;
+  color: #222;
+  background-color: #f6f7f9;
+}
+
+body {
+  margin: 0;
+  padding: 24px;
+}
+
+#root {
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 1.6rem;
+  margin-bottom: 4px;
+}
+
+h2 {
+  font-size: 1.15rem;
+  margin: 0 0 12px;
+}
+
+.subtitle {
+  color: #666;
+  margin-top: 0;
+}
+
+/* 카드 — 예제를 묶어 보여 주는 박스 */
+.card {
+  background: #fff;
+  border: 1px solid #e6e8eb;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+/* 입력 폼 줄 */
+.todo-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 10px 12px;
+  font-size: 1rem;
+  border: 1px solid #cfd4da;
+  border-radius: 8px;
+  outline: none;
+}
+
+input[type="text"]:focus {
+  border-color: #4f86ff;
+}
+
+button {
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: #4f86ff;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #3b73ee;
+}
+
+button.ghost {
+  background: #fff;
+  color: #555;
+  border-color: #cfd4da;
+}
+
+button.ghost:hover {
+  background: #f0f2f5;
+}
+
+button.danger {
+  background: #fff;
+  color: #d64545;
+  border-color: #f0c4c4;
+}
+
+button.danger:hover {
+  background: #fdf0f0;
+}
+
+/* 할 일 목록 */
+ul.todo-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 4px;
+  border-bottom: 1px solid #eef0f2;
+}
+
+li.todo-item:last-child {
+  border-bottom: none;
+}
+
+li.todo-item .text {
+  flex: 1;
+}
+
+/* 완료된 항목은 줄을 긋고 흐리게 — done 클래스로 표시 */
+li.todo-item .text.done {
+  text-decoration: line-through;
+  color: #aaa;
+}
+
+.empty {
+  color: #999;
+  text-align: center;
+  padding: 24px 0;
+}
+
+.count {
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 12px;
+}
+
+/* 게시글 — Todo와 구분되는 카드형 레이아웃 (teal 계열) */
+.post-app h2 {
+  color: #0f4c47;
+}
+
+.post-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.post-form-row {
+  display: flex;
+  gap: 8px;
+}
+
+.post-body-input,
+.post-edit-form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  line-height: 1.5;
+  border: 1px solid #b8d4d0;
+  border-radius: 8px;
+  outline: none;
+  resize: vertical;
+  box-sizing: border-box;
+  background: #fafdfc;
+}
+
+.post-body-input:focus,
+.post-edit-form textarea:focus {
+  border-color: #0d9488;
+  background: #fff;
+}
+
+.post-app button[type="submit"] {
+  background: #0d9488;
+}
+
+.post-app button[type="submit"]:hover {
+  background: #0b7a71;
+}
+
+ul.post-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+li.post-item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: linear-gradient(135deg, #f7fbfb 0%, #f0f7f6 100%);
+  border: 1px solid #d4e8e4;
+  border-left: 4px solid #0d9488;
+  border-radius: 10px;
+}
+
+li.post-item--editing {
+  background: #fff;
+  border-left-color: #f59e0b;
+}
+
+.post-content {
+  flex: 1;
+}
+
+.post-title {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #134e4a;
+  margin-bottom: 6px;
+}
+
+.post-body {
+  margin: 0;
+  color: #4a6b66;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
+.post-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.post-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.post-edit-form input[type="text"] {
+  width: 100%;
+  border-color: #b8d4d0;
+}
+
+.post-edit-form input[type="text"]:focus {
+  border-color: #f59e0b;
+}
+
+.post-edit-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.post-count {
+  color: #5f7a76;
+  font-size: 0.9rem;
+  margin-top: 16px;
+  text-align: right;
+}

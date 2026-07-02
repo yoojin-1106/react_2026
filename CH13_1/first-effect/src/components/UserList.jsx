@@ -34,7 +34,7 @@ function UserList(){
         3. 브라우저에 있는 localStorage, sessionStorage
         4. 이 컴포넌트가 사라질때 (클린업이 필요할때)
     */
-    useEffect(() => {
+    useEffect(() => { ` `
         loadUsers();
     }, [])
 

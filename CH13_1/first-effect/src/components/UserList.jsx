@@ -1,25 +1,38 @@
 import { useState, useEffect } from "react";
+/* 기본응답이 3초이내 */
+
 
 function UserList(){
    
     const [users, setUsers] = useState([]);
-    // async/await
-    const loadUsers = async () => {
-        try {
-            const res = await fetch(`https://jsonplaceholder.typicode.com/users`);
-            console.log(res);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-            if(!res.ok){
-                throw new Error(`서버 응답 오류 : ${res.status}`);
+     useEffect(() => { 
+        // async/await
+        const loadUsers = async () => {
+            try {
+                const res = await fetch(`https://jsonplaceholder.typicode.com/users`);
+                //console.log(res);
+
+                if(!res.ok){
+                    throw new Error(`서버 응답 오류 : ${res.status}`);
+                }
+
+                const data = await res.json();
+                //console.log(data);
+                setUsers(data);
+            } catch (e) {
+                //console.log(e);
+                setError(e.message);
+            } finally{
+                setLoading(false);
             }
-
-            const data = await res.json();
-            console.log(data);
-            setUsers(data);
-        } catch (error) {
-            console.log(error);
         }
-    }
+
+        loadUsers();
+
+    }, [])
 
     /* 
         첫번째인자 : 화면 랜더링 끝난 뒤 실행할 코드
@@ -34,9 +47,6 @@ function UserList(){
         3. 브라우저에 있는 localStorage, sessionStorage
         4. 이 컴포넌트가 사라질때 (클린업이 필요할때)
     */
-    useEffect(() => { ` `
-        loadUsers();
-    }, [])
 
     return(
         <>
@@ -55,6 +65,31 @@ function UserList(){
             </div>
         </>
     )
+
+    if(loading){
+        return(
+            <>
+                <div className="demo">
+                    <p className="status-loading">
+                        사용자 목록을 불러오는 중입니다.
+                    </p>
+                </div>
+            </>
+        )
+    }
+
+    if(error){
+        return(
+            <>
+                <div className="demo">
+                    <p className="status-error">
+                        불러오기에 실패하였습니다.
+                    </p>
+                </div>
+            </>
+        )
+    }
+
 }
 
 export default UserList;

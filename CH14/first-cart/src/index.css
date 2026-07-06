@@ -1,0 +1,119 @@
+/* code/ch14/src/index.css */
+:root {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto,
+    "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  line-height: 1.6;
+  color: #222;
+  background-color: #f6f7f9;
+}
+
+body {
+  margin: 0;
+  padding: 24px;
+}
+
+#root {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 1.6rem;
+  margin-bottom: 4px;
+}
+
+h2 {
+  font-size: 1.15rem;
+  margin: 0 0 12px;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #e6e8eb;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.product-row,
+.cart-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 4px;
+  border-bottom: 1px solid #eef0f2;
+}
+
+.product-row:last-child,
+.cart-row:last-child {
+  border-bottom: none;
+}
+
+.product-row .name,
+.cart-row .name {
+  flex: 1;
+}
+
+.product-row .price,
+.cart-row .subtotal {
+  color: #666;
+  margin-right: 4px;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 2px solid #eef0f2;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.count {
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 12px;
+}
+
+button {
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: #4f86ff;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #3b73ee;
+}
+
+button.ghost {
+  background: #fff;
+  color: #555;
+  border-color: #cfd4da;
+}
+
+button.ghost:hover {
+  background: #f0f2f5;
+}
+
+button.danger {
+  background: #fff;
+  color: #d64545;
+  border-color: #f0c4c4;
+}
+
+button.danger:hover {
+  background: #fdf0f0;
+}
+
+.empty {
+  color: #999;
+  text-align: center;
+  padding: 24px 0;
+}

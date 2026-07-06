@@ -10,8 +10,8 @@ function CartSummary({items, onRemove, onChage}){
                         //console.log(item.id);
                         return(
                                 <li className="cart-row" key={item.id}>
-                                    <span className="name">{item.name} x {item.quantity}</span>
-                                    <span className="subtotal">{Number(item.price) * Number(item.quantity)}</span>
+                                    <span className="name">{item.name} x {item.quantity}개(잔)</span>
+                                    <span className="subtotal">{Number(item.price) * Number(item.quantity)}원</span>
                                     <button className="ghost" onClick={() => onChage(item.id, 1)}>+1</button>
                                     <button className="ghost" onClick={() => onChage(item.id, -1)}>-1</button>
                                     <button className="danger" onClick={() => onRemove(item.id)}>삭제</button>
@@ -20,11 +20,12 @@ function CartSummary({items, onRemove, onChage}){
                         )
                     })}
                 </ul>
-                
-                <div className="cart-total">
+
+                <div className="cart-row">
                     <span>총 결제 금액: </span>
-                    <span className="total-price">{totalPrice.toLocaleString()}원</span>
+                    <span className="subtotal">{totalPrice.toLocaleString()}원</span>
                 </div>
+     
             </div>
 
     )

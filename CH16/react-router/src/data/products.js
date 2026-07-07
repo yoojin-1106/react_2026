@@ -19,7 +19,12 @@ export const products =[
 ];
 
 export function findProductById(id){
-    return products.find((p) => p.id === id)
+    console.log("findProductById id : ", typeof id);
+
+    return products.find((p) => { 
+         console.log("findProductById products: ", typeof p.id, p.id) 
+         return p.id === Number(id)
+        })
 }
 
 // 나중엔 백엔드로 대체

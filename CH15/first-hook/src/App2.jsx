@@ -20,23 +20,23 @@ function Layout() {
 
   return (
     <>
-      <div className={`app ${isDark ? "dark" : "light"}`}>
-          <h1>context - props 사용안하고 다크모드 켜기</h1>
-          <section className='section'>
-            <ThemeToggleButton />
+      <div className = {`app ${isDark ? "dark" : "light"}`}>
+          <section className ='section'>
+            <h2>context - props 사용안하고 다크모드 켜기</h2>
+            <ThemeToggleButton/>
           </section>
-          <section className='section'>
-              <h1>떨어진 두개의 컴포넌트에서 이름을 공유합니다.</h1>
-              <UserHeader />
-              <div className='gap'>
-                <UserGreeting />
+          <section className = 'section'>
+              <h2>떨어진 두개의 컴포넌트에서 이름을 공유합니다.</h2>
+              <UserHeader/>
+              <div className = 'gap'>
+                <UserGreeting/>
               </div>
           </section>
-          <section className='section'>
-              <h3>Greeting</h3>
-              <GreetingForm />
-              <div className='gap'>
-                <GreetingCard />
+          <section className = 'section'>
+              <h2>Greeting</h2>
+              <GreetingForm/>
+              <div className = 'gap'>
+                <GreetingCard/>
               </div>
           </section>
       </div>
@@ -58,9 +58,9 @@ function App2() {
   return (
     <UserProvider>
       <ThemeProvider>
-      <GreetingProvider>
-        <Layout/>
-      </GreetingProvider>
+        <GreetingProvider>
+          <Layout/>
+        </GreetingProvider>
       </ThemeProvider>
     </UserProvider>
     )

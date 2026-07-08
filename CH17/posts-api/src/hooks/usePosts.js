@@ -29,14 +29,15 @@ export function usePosts(){
         load();
     }, []);
 
-
+    //신규
     async function add(post) {
         setError(null);
         const created = await createPost(post);
-        setPosts((prev) => [...created, prev]);
+        setPosts((prev) => [created, ...prev]);
 
     }
 
+    //수정
     async function edit(id, post) {
         setError(null);
         const data = await updatePost(id, post);
@@ -47,6 +48,7 @@ export function usePosts(){
 
     }
 
+    //삭제
     async function remove(id) {
         setError(null);
         await deletePost(id);

@@ -37,13 +37,14 @@ export async function createPost(post) {
                     `${SUPABASE_URL}/rest/v1/posts`
                     , {
                         method : "POST"
-                      , headers : headers({'Content-Type' : 'application/json'})
+                      , headers : headers({'Content-Type' : 'application/json', Prefer : 'return=representation'})
                       , body : JSON.stringify( {title:post.title, body:post.body, user_id:4})
                     }
                 );
     if(!res.ok) throw new Error(`저장실패`);
+
     const data = await res.json();
-    return data;     
+    return data[0];     
                
 }
 
@@ -54,13 +55,13 @@ export async function updatePost({id, post}) {
                     `${SUPABASE_URL}/rest/v1/posts?id=eq.${id}`
                     , {
                         method : "PATCH"
-                      , headers : headers({'Content-Type' : 'application/json'})
+                      , headers : headers({'Content-Type' : 'application/json', Prefer : 'return=representation'})
                       , body : JSON.stringify( {title:post.title, body:post.body})
                     }
                 );
     if(!res.ok) throw new Error(`수정실패`);
     const data = await res.json();
-    return data;     
+    return data[0];     
 
 }
 

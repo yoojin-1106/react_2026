@@ -18,6 +18,8 @@ export default function PostList({posts, loading, error, onEdit, onDelete}){
             
     }
 
+    console.log(onEdit);
+
     return (
         <ul style={{listStyle:'none', padding:0}}>
             {posts.map((post) => (

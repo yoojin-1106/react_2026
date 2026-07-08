@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getPosts } from "../api/posts";
+import { getPosts, createPost, updatePost, deletePost } from "../api/posts";
 
 export function usePosts(){
     //console.log("usePosts");
@@ -29,7 +29,35 @@ export function usePosts(){
         load();
     }, []);
 
-    return {posts, loading, error};
+
+    async function add(post) {
+        setError(null);
+        const created = await createPost(post);
+        setPosts((prev) => [...created, prev]);
+
+    }
+
+    async function edit(id, post) {
+        setError(null);
+        const data = await updatePost(id, post);
+        setPosts((prev) => 
+            prev.map((p) => 
+                p.id === id, post ? {...p, ...post} : p
+        ));
+
+    }
+
+    async function remove(id) {
+        setError(null);
+        await deletePost(id);
+        setPosts((prev) => prev.filter((p) => p.id !== id ));
+
+    }
+    //객체 : add, edit, remove
+
+    return {posts, loading, error, add, edit, remove};
+
+
 
 }
 

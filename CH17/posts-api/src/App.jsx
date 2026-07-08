@@ -8,10 +8,22 @@ import { usePosts } from './hooks/usePosts'
 
 function App() {
 const {posts, loading, error} = usePosts();
+const {editPost, setEditPost} = useState(false); //true, false
+
+async function handleSubmit(data) {
+  if(editPost){
+
+  }
+}
+
  //console.log("App");
+
   return (
     <div>
       <h1>미니게시판 CRUD연습</h1>
+      <div className='button-row'>
+        <button onClick={() => {}}>신규</button>
+      </div>
       <PostList 
           posts={posts} 
           loading={loading} 

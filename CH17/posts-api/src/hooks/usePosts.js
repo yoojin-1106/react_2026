@@ -7,7 +7,7 @@ export function usePosts(){
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    const load = async() => {
+    const load = async () => {
 
         try {
             setLoading(true);
@@ -15,9 +15,9 @@ export function usePosts(){
             
             const data = await getPosts();
             setPosts(data);
-        } catch (error) {
-           console.error(error);
-           setError(error instanceof Error ? error.message : "포스트를 가져오는데 실패했습니다.");
+        } catch (e) {
+           console.error(e);
+           
            
         }finally{
             setLoading(false);
@@ -62,4 +62,5 @@ export function usePosts(){
 
 
 }
+
 

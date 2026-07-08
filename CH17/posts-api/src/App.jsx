@@ -10,7 +10,7 @@ import PostForm from './components/PostForm'
 function App() {
   // add, edit, remove 객체함수
 const {posts, loading, error, add, edit, remove} = usePosts();
-const {editPost, setEditPost} = useState(null); //post객체가 들어감
+const [editPost, setEditPost] = useState(null); //post객체가 들어감
 
 // 수정
 async function handleSubmit(data) {

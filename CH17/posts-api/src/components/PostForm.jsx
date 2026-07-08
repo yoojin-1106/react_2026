@@ -35,8 +35,8 @@ function PostForm({setEditPost, onSubmit, onCancle}){
     return (
         <form className="form card" onSubmit={handleSubmit} >
             <h2>{isEditing ? "수정" : "새글"}</h2>
-            <input type="text" placeholder="제목을 작성" value={title} onChange={(e) => setTitle(e.target.value)}/>
-            <textarea placeholder="내용을 작성" value={body} onChange={(e) => setBody(e.target.value)}/>
+            <input type="text" placeholder="제목을 작성" value={title || ""} onChange={() => setTitle(e.target.value)}/>
+            <textarea placeholder="내용을 작성" value={body || ""} onChange={() => setBody(e.target.value)}/>
             <div className='button-row'>
                 <button type="submit">{isEditing ? "수정" : "추가"}</button>
             </div>

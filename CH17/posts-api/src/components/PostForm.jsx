@@ -1,42 +1,54 @@
 import { useState, useEffect } from "react";
 
-function PostForm({setEditPost, onSubmit, onCancle}){
+function PostForm({editPost, onSubmit, onCancle}){
 // onSubmit -> handleSubmit({title, body})
 // onSubmit -> handleSubmit(data)
 
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("");
     
-    console.log("PostForm setEditPost : ");
-    console.log(setEditPost);
-    useEffect(() =>{
-        if(setEditPost){
-            setTitle(setEditPost.title);
-            setBody(setEditPost.body);
+    //console.log("PostForm editPost : ");
+    useEffect(() => {
+        if(editPost){
+            setTitle(editPost.title);
+            setBody(editPost.body);
         }else{
-           setTitle('');
-           setBody(''); 
+            setTitle('');
+            setBody(''); 
         }
-            
-    }
-    , [setEditPost]);
-
+        
+    }, [editPost]);
+    
+   // console.log(editPost);
 
     function handleSubmit(e){
+         console.log("111");
         e.preventDefault();
-        onSubmit({title : title, body : body})
+        const post = {title: title, body:body}
+        onSubmit(post);
         setTitle('');
         setBody(''); 
 
     }
 
-    const isEditing = Boolean(setEditPost);
+    const isEditing = Boolean(editPost);
+
+    //console.log(isEditing);
    
     return (
         <form className="form card" onSubmit={handleSubmit} >
             <h2>{isEditing ? "수정" : "새글"}</h2>
-            <input type="text" placeholder="제목을 작성" value={title || ""} onChange={() => setTitle(e.target.value)}/>
-            <textarea placeholder="내용을 작성" value={body || ""} onChange={() => setBody(e.target.value)}/>
+            <input 
+                    type="text" 
+                    placeholder="제목을 작성" 
+                    value={title} 
+                    onChange={(e) => setTitle(e.target.value)}
+            />
+            <textarea 
+                    placeholder="내용을 작성" 
+                    value={body} 
+                    onChange={(e) => setBody(e.target.value)}
+            />
             <div className='button-row'>
                 <button type="submit">{isEditing ? "수정" : "추가"}</button>
             </div>

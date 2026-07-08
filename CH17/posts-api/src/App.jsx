@@ -3,8 +3,8 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
-import PostList from './components/PostList'
 import { usePosts } from './hooks/usePosts'
+import PostList from './components/PostList'
 import PostForm from './components/PostForm'
 
 function App() {
@@ -15,8 +15,9 @@ const [editPost, setEditPost] = useState(null); //post객체가 들어감
 // 수정
 async function handleSubmit(data) {
     try {
-      console.log("handleSubmit data : ");
-      console.log(data);
+      //console.log("handleSubmit data : ");
+      //console.log(data);
+       //console.log(editPost);
       if(editPost){
         await edit(editPost.id, data);
         setEditPost(null);
@@ -30,12 +31,11 @@ async function handleSubmit(data) {
 }
 
 // 삭제
-async function handleDel(data) {
+async function handleDel(id) {
     if(!window.confirm("정말 삭제하시겠습니까?")) return;
     try {
-      if(editPost){
-        await remove(editPost.id);
-      }
+      await remove(id);
+  
     } catch (e) {
       alert(e.message);
     }finally{
@@ -53,7 +53,7 @@ async function handleDel(data) {
       <h1>미니게시판 CRUD연습</h1>
       <div>
         <PostForm 
-          setEditPost={setEditPost} 
+          editPost={editPost} 
           onSubmit={handleSubmit} 
           onCancle={() => setEditPost(null)} 
         />

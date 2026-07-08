@@ -49,8 +49,9 @@ export async function createPost(post) {
 }
 
 //수정
-export async function updatePost({id, post}) {
+export async function updatePost(id, post) {
     // `${SUPABASE_URL}/rest/v1/posts/:id`
+    console.log(id);
     const res = await fetch(
                     `${SUPABASE_URL}/rest/v1/posts?id=eq.${id}`
                     , {
@@ -61,12 +62,13 @@ export async function updatePost({id, post}) {
                 );
     if(!res.ok) throw new Error(`수정실패`);
     const data = await res.json();
-    return data[0];     
+    return data;     
 
 }
 
 //삭제
-export async function deletePost({id}) {
+export async function deletePost(id) {
+    //console.log(id);
     // `${SUPABASE_URL}/rest/v1/posts/:id`
     // eq. -> equal : id같으면
     const res = await fetch(

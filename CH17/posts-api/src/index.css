@@ -147,3 +147,39 @@ button.danger:hover {
   font-size: 0.85rem;
   color: #9aa5b1;
 }
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 20px 60px;
+}
+
+/* 상단 메뉴 */
+.navbar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-soft);
+}
+
+.navbar .brand {
+  font-weight: 700;
+  margin-right: 12px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: var(--muted);
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+/* NavLink가 현재 화면일 때 자동으로 붙는 active 클래스 */
+.navbar a.active {
+  color: var(--brand);
+  background: #fff;
+  font-weight: 600;
+  box-shadow: 0 0 0 1px var(--line);
+}

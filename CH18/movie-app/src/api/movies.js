@@ -14,6 +14,7 @@ export async function searchMovies(query) {
     }
         
     const data = await res.json();
+    console.log(data);
    
     if(data.Resoponse === 'False'){
         return [];

@@ -1,25 +1,25 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
 import { Route, Routes } from 'react-router-dom'
+import './App.css'
 import Navbar from './components/NavBar'
 import Home from './pages/Home'
 import Favorites  from './pages/Favorites'
 import MovieDetail from './pages/MovieDetail'
+import NotFound from './pages/NotFound'
+import { FavoritesProvider } from './context/FavoritesContext'
 
 function App() {
  
   return (
-      <div>
+      <FavoritesProvider>
           <Navbar/>
           <Routes>
               <Route path='/' element={<Home/>}/>
-              <Route path='/favorites' element={<Favorites/>}/>
               <Route path='/movie/:id' element={<MovieDetail/>}/>
+              <Route path='/favorites' element={<Favorites/>}/>
+              <Route path='*' element={<NotFound/>}/>
           </Routes>
-      </div>
+      </FavoritesProvider>
   )
 }
 

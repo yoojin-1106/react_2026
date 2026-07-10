@@ -60,4 +60,3 @@ export function useFavorites(){
     return {favorites, setFavorites, isFavorite, add, remove, toggle}
 
 }
-

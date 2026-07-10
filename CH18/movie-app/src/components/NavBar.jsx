@@ -11,9 +11,9 @@ export default function Navbar(){
             <span className="brand">영화놀이터</span>
             <NavLink to="/">검색</NavLink>
             <NavLink to="/favorites">즐겨찾기
-                {favorites.length >0 && ( 
-                    <span className="badge">{favorites.length}</span>
-                    )}
+                {favorites.length > 0 && ( 
+                   <span className="badge">{favorites.length}</span>
+                )}
             </NavLink>
         </nav>
     )

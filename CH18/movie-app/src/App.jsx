@@ -15,12 +15,14 @@ function App() {
           <Navbar/>
           <Routes>
               <Route path='/' element={<Home/>}/>
-              <Route path='/movie/:id' element={<MovieDetail/>}/>
               <Route path='/favorites' element={<Favorites/>}/>
+              <Route path='/movie/:id' element={<MovieDetail/>}/>
               <Route path='*' element={<NotFound/>}/>
           </Routes>
       </FavoritesProvider>
   )
 }
+
+// Route 순서 중요!!
 
 export default App

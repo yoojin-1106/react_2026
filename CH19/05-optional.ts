@@ -31,3 +31,21 @@ function salePrice(product : Product | undefined) : string {
 
 console.log(salePrice(headphone));
 console.log(salePrice(keyboad));
+
+// 연습1) User interface id string nickname string and ? option 
+interface User{
+    id : string
+    nickname? : string
+}
+
+//2) showNickname 함수 선언, nickname 매개변수로 undefined 를 받고 '익명'
+function showNickname( user : User | undefined) : string{
+    return user?.nickname ?? '익명'
+}
+
+
+const usetId : User = {
+      id : "111d"
+}
+
+console.log(showNickname(usetId));

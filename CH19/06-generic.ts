@@ -27,3 +27,11 @@ console.log(b);
         return items[0];
     } -> (X)
  */
+
+function box<T>(value : T) : {value : T}{
+    return {value}
+}
+
+console.log(box<number>(12000));
+console.log(box("핸드폰"));
+

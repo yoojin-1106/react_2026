@@ -1,4 +1,5 @@
 export type Category = 'electronics' | 'fashion' | 'home' | 'book' | 'food'  ;
+//key값
 
 export const CATEGORY_LABELS : Record<Category, string> = {
       'electronics' : '전자기기'

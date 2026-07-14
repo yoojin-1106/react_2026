@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import './App.css'
-import ProductGrid from './components/ProductGrid' 
-import { PRODUCTS } from './data/products'
-import type { Category } from './types'
-import CategoryFilter from './components/CategoryFilter'
-import SearchBar from './components/SearchBar'
+import '../App.css'
+import ProductGrid from '../components/ProductGrid' 
+import { PRODUCTS } from '../data/products'
+import type { Category } from '../types'
+import CategoryFilter from '../components/CategoryFilter'
+import SearchBar from '../components/SearchBar'
 
-function App() {
+export default function Home() {
   const [category, setCategory] = useState<Category | 'all'>('all')
   const [query, setQuery] = useState('');
   
@@ -14,9 +14,6 @@ function App() {
       (category === 'all' || p.category === category) 
                 && (p.name.toLowerCase().includes(query.trim().toLowerCase()))
 );
-// includes name변수에 있는 글자에서 query 변수에 글자가 있으면 true, 없으면 false반환
-// includes 문자열 또는 배열
-
 
   return (
     <div className='container'>
@@ -32,4 +29,3 @@ function App() {
   )
 }
 
-export default App

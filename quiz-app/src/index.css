@@ -1,0 +1,733 @@
+/* ch20/quiz-app/src/index.css
+ * 퀴즈 앱 스타일.
+ * 화면 순서대로 정리해두었습니다: 공통 → 홈 → 퀴즈 → 결과 → 문제관리
+ */
+
+/* ============================================================
+ * 0. 공통 (색/여백/버튼)
+ * ========================================================== */
+
+/* 색을 이름표로 만들어 두면 나중에 한 곳만 고쳐도 전체가 바뀝니다. */
+:root {
+  --line: #e2e2e8;
+  --brand: #2563eb;
+  --brand-soft: #eff4ff;
+  --ink: #1f2330;
+  --muted: #6b7280;
+  --bg-soft: #f6f7fb;
+  --ok: #16a34a;
+  --ok-soft: #f0fdf4;
+  --danger: #dc2626;
+  --danger-soft: #fef2f2;
+  --radius: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Apple SD Gothic Neo',
+    'Noto Sans KR', sans-serif;
+  color: var(--ink);
+  line-height: 1.65;
+  background: var(--bg-soft);
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 28px 20px 80px;
+}
+
+h1 {
+  font-size: 1.6rem;
+  margin: 4px 0 8px;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.center {
+  text-align: center;
+}
+
+.hint {
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 32px 0;
+}
+
+/* 카드: 흰 배경 + 둥근 모서리. 이 앱의 기본 블록입니다. */
+.card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px;
+}
+
+.page-head {
+  margin-bottom: 20px;
+}
+
+.section-title {
+  margin: 36px 0 14px;
+  font-size: 1.15rem;
+}
+
+/* 버튼 */
+button {
+  font: inherit;
+  cursor: pointer;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  padding: 10px 18px;
+  border-radius: 10px;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+}
+
+button:hover:not(:disabled) {
+  border-color: #c9cbd4;
+}
+
+button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+button.primary {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: #fff;
+  font-weight: 600;
+}
+
+button.primary:hover:not(:disabled) {
+  background: #1d4fd8;
+}
+
+button.danger {
+  color: var(--danger);
+  border-color: #f3c9c9;
+}
+
+button.danger:hover {
+  background: var(--danger-soft);
+}
+
+.button-row {
+  display: flex;
+  gap: 8px;
+}
+
+.center-row {
+  justify-content: center;
+  margin-top: 18px;
+}
+
+/* 상태 박스 (문제 없음 / 결과 없음 / 404 공통) */
+.state-box {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.primary-link {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--brand);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 4px;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.back-link:hover {
+  color: var(--brand);
+}
+
+/* 문제 유형 뱃지 */
+.tag {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--brand);
+  background: var(--brand-soft);
+}
+
+.tag-short {
+  color: #9a3412;
+  background: #fff7ed;
+}
+
+/* ============================================================
+ * 1. 상단 메뉴 (Navbar)
+ * ========================================================== */
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 20px;
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+}
+
+.navbar .brand {
+  font-weight: 700;
+  color: var(--ink);
+  margin-right: auto; /* 브랜드는 왼쪽, 나머지 메뉴는 오른쪽으로 밀기 */
+}
+
+.navbar a {
+  text-decoration: none;
+  color: var(--muted);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+/* NavLink 가 현재 페이지일 때 자동으로 붙여주는 클래스 */
+.navbar a.active {
+  color: var(--brand);
+  background: var(--brand-soft);
+  font-weight: 600;
+}
+
+.navbar .brand.active {
+  background: none;
+  color: var(--ink);
+}
+
+/* ============================================================
+ * 2. 홈 : 카테고리 고르기
+ * ========================================================== */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.category-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px 20px;
+  /* 왼쪽에 브랜드 색 띠를 둬서 카드가 밋밋하지 않게 */
+  border-left: 4px solid var(--brand);
+  transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+}
+
+.category-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(37, 99, 235, 0.12);
+}
+
+.category-card h3 {
+  margin: 0 0 4px;
+  font-size: 1.05rem;
+}
+
+.category-card p {
+  margin: 0;
+  font-size: 0.88rem;
+}
+
+.category-card .count {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 3px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--brand);
+  background: var(--brand-soft);
+}
+
+/* ============================================================
+ * 3. 퀴즈 : 진행바 + 문제 카드 + 보기
+ * ========================================================== */
+.progress {
+  margin-bottom: 16px;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+}
+
+.progress-track {
+  height: 8px;
+  background: #e6e8ef;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+/* width 는 JSX 에서 style={{ width: '30%' }} 로 넣어줍니다 */
+.progress-fill {
+  height: 100%;
+  background: var(--brand);
+  border-radius: 999px;
+  transition: width 0.25s ease;
+}
+
+.question-card {
+  padding: 26px 24px 28px;
+}
+
+.question-head {
+  margin-bottom: 10px;
+}
+
+.question-text {
+  margin: 0 0 20px;
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+/* 객관식 보기 */
+.choice-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.choice {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+  padding: 14px 16px;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.choice:hover {
+  background: var(--bg-soft);
+  border-color: #c9cbd4;
+}
+
+/* 고른 보기 */
+.choice.selected {
+  border-color: var(--brand);
+  background: var(--brand-soft);
+  font-weight: 600;
+}
+
+.choice-num {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  line-height: 25px;
+  text-align: center;
+  border-radius: 50%;
+  font-size: 0.85rem;
+  color: var(--muted);
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+}
+
+.choice.selected .choice-num {
+  color: #fff;
+  background: var(--brand);
+  border-color: var(--brand);
+}
+
+/* 주관식 입력 */
+.short-answer input {
+  width: 100%;
+  font: inherit;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+.short-answer input:focus {
+  outline: none;
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.short-answer .hint {
+  text-align: left;
+  padding: 8px 2px 0;
+  font-size: 0.82rem;
+}
+
+/* 이전 / 다음 버튼 */
+.quiz-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+/* ============================================================
+ * 4. 결과 : 점수판 + 오답노트
+ * ========================================================== */
+.score-board {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+/* 점수만큼 채워지는 도넛.
+ * conic-gradient 로 --percent 만큼 파란색, 나머지는 회색으로 칠합니다.
+ * --percent 값은 JSX 에서 style={{ '--percent': '80%' }} 로 넘겨줍니다. */
+.score-ring {
+  flex-shrink: 0;
+  width: 116px;
+  height: 116px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: conic-gradient(
+    var(--brand) var(--percent),
+    #e6e8ef var(--percent)
+  );
+}
+
+.score-ring-inner {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: #fff;
+  display: grid;
+  place-items: center;
+  line-height: 1.1;
+}
+
+.score-ring-inner strong {
+  font-size: 1.9rem;
+}
+
+.score-ring-inner span {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.score-comment {
+  margin: 0 0 10px;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.score-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.stat {
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  background: var(--bg-soft);
+  color: var(--muted);
+}
+
+.stat.ok {
+  color: var(--ok);
+  background: var(--ok-soft);
+}
+
+.stat.no {
+  color: var(--danger);
+  background: var(--danger-soft);
+}
+
+/* 오답노트 */
+.review-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.review-item {
+  padding: 18px 20px;
+  border-left: 4px solid var(--line);
+}
+
+.review-item.ok {
+  border-left-color: var(--ok);
+}
+
+.review-item.no {
+  border-left-color: var(--danger);
+}
+
+.review-head {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+/* 정답 / 오답 글자 배지 */
+.review-mark {
+  flex-shrink: 0;
+  padding: 1px 9px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+.review-mark.ok {
+  color: var(--ok);
+  background: var(--ok-soft);
+}
+
+.review-mark.no {
+  color: var(--danger);
+  background: var(--danger-soft);
+}
+
+.review-question {
+  margin: 0;
+  font-weight: 600;
+}
+
+.review-body {
+  margin-top: 10px;
+  padding-left: 52px;
+  font-size: 0.93rem;
+}
+
+.review-body p {
+  margin: 4px 0;
+}
+
+.review-body .label {
+  display: inline-block;
+  width: 46px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.answer {
+  padding: 2px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.answer.ok {
+  color: var(--ok);
+  background: var(--ok-soft);
+}
+
+.answer.no {
+  color: var(--danger);
+  background: var(--danger-soft);
+  text-decoration: line-through;
+}
+
+.explanation {
+  margin-top: 10px !important;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--bg-soft);
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+/* ============================================================
+ * 5. 문제 관리 : 폼 + 목록
+ * ========================================================== */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.form h2 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.form label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+}
+
+.form label > span {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.form input[type='text'],
+.form select,
+.form textarea {
+  font: inherit;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.form textarea {
+  min-height: 64px;
+  resize: vertical;
+}
+
+.form input[type='text']:focus,
+.form select:focus,
+.form textarea:focus {
+  outline: none;
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.form-row {
+  display: flex;
+  gap: 12px;
+}
+
+/* 보기 4칸 편집기 */
+.choices-editor {
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  padding: 14px 16px 16px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.choices-editor legend {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted);
+  padding: 0 6px;
+}
+
+.choice-editor-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.choice-editor-row input[type='radio'] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--brand);
+  flex-shrink: 0;
+}
+
+.choice-editor-row input[type='text'] {
+  flex: 1;
+}
+
+/* 카테고리 필터 칩 */
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 28px 0 14px;
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  background: #fff;
+}
+
+.chip.on {
+  color: #fff;
+  background: var(--brand);
+  border-color: var(--brand);
+  font-weight: 600;
+}
+
+/* 문제 목록 */
+.admin-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 16px 18px;
+}
+
+.admin-item-main {
+  min-width: 0; /* 긴 문장이 버튼을 밀어내지 않게 */
+}
+
+.admin-question {
+  margin: 6px 0 2px;
+  font-weight: 600;
+}
+
+.admin-answer {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.admin-item .button-row button {
+  padding: 7px 14px;
+  font-size: 0.9rem;
+}
+
+/* ============================================================
+ * 6. 좁은 화면 대응
+ * ========================================================== */
+@media (max-width: 560px) {
+  .score-board {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .admin-item {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

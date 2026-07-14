@@ -17,7 +17,7 @@ function counterReducer(state : number, action : Action) : number{
         }
 }                
 
-function App2() {
+function App() {
     const [count, dispatch] = useReducer(counterReducer, 0);
 
   return (
@@ -32,4 +32,4 @@ function App2() {
   )
 }
 
-export default App2
+export default App

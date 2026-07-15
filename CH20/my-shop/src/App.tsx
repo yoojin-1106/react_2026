@@ -6,6 +6,8 @@ import ProductDetail from './pages/ProductDetail'
 import NotFound from './pages/NotFound'
 import Cart from './pages/Cart'
 import Checkout from './pages/Checkout'
+import Orders from './pages/Orders'
+import OrderDetail from './pages/OrderDetail'
 import { CartProvider } from './context/CartContext'
 
 function App() {
@@ -20,6 +22,8 @@ function App() {
           <Route path='/products/:id' element={<ProductDetail/>}/>
           <Route path='/cart' element={<Cart/>}/>
           <Route path='/checkout' element={<Checkout/>}/>
+          <Route path='/orders' element={<Orders/>}/>
+          <Route path='/orders/:id' element={<OrderDetail/>}/>
           <Route path='*' element={<NotFound/>}/>
         </Route>
       </Routes>

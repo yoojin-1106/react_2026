@@ -21,6 +21,9 @@ export default function Navbar(){
                                 <span className="cart-badge">{totalCount}</span>
                          }
                     </NavLink>
+                    <NavLink to='/orders' className="nav-link">
+                        주문내역
+                    </NavLink>
                 </div>
             </nav>
         </header>

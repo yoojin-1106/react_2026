@@ -1,0 +1,93 @@
+{
+  "menu": [
+    {
+      "id": 100,
+      "name": "아메리카노",
+      "englishName": "Americano",
+      "category": "coffee",
+      "price": 4100,
+      "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500",
+      "options": ["HOT", "ICE"],
+      "isAvailable": true,
+      "description": "깊고 진한 에스프레소에 깔끔한 물을 더해 깔끔한 풍미의 커피"
+    },
+    {
+      "id": 101,
+      "name": "카페라떼",
+      "englishName": "Cafe Latte",
+      "category": "coffee",
+      "price": 4600,
+      "image": "https://images.unsplash.com/photo-1541167760496-1628856ab772?w=500",
+      "options": ["HOT", "ICE"],
+      "isAvailable": true,
+      "description": "진한 에스프레소와 부드러운 스팀 밀크가 만나 고소한 라떼"
+    },
+    {
+      "id": 102,
+      "name": "카페라떼",
+      "englishName": "Cafe Latte",
+      "category": "coffee",
+      "price": 4600,
+      "image": "https://images.unsplash.com/photo-1541167760496-1628856ab772?w=500",
+      "options": ["HOT", "ICE"],
+      "isAvailable": true,
+      "description": "진한 에스프레소와 부드러운 스팀 밀크가 만나 고소한 라떼"
+    },
+    {
+      "id": 201,
+      "name": "자몽 허니 블랙티",
+      "englishName": "Grapefruit Honey Black Tea",
+      "category": "tea",
+      "price": 5300,
+      "image": "https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=500",
+      "options": ["HOT", "ICE"],
+      "isAvailable": true,
+      "description": "새콤달콤한 자몽과 꿀, 그윽한 홍차 풍미가 어우러진 티 드링크"
+    },
+    {
+      "id": 500,
+      "name": "초코칩 쿠키",
+      "englishName": "Chocochip Cookie",
+      "category": "dessert",
+      "price": 3200,
+      "image": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=500",
+      "options": [],
+      "isAvailable": false,
+      "description": "달콤한 초콜릿 칩이 가득 박힌 바삭한 쿠키 (현재 품절)"
+    },
+    {
+      "id": 501,
+      "name": "초코칩 쿠키",
+      "englishName": "Chocochip Cookie",
+      "category": "dessert",
+      "price": 3200,
+      "image": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=500",
+      "options": [],
+      "isAvailable": false,
+      "description": "달콤한 초콜릿 칩이 가득 박힌 바삭한 쿠키 (현재 품절)"
+    },
+    {
+      "id": 502,
+      "name": "초코칩 쿠키",
+      "englishName": "Chocochip Cookie",
+      "category": "dessert",
+      "price": 3200,
+      "image": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=500",
+      "options": [],
+      "isAvailable": false,
+      "description": "달콤한 초콜릿 칩이 가득 박힌 바삭한 쿠키 (현재 품절)"
+    },
+    {
+      "id": 503,
+      "name": "초코칩 쿠키",
+      "englishName": "Chocochip Cookie",
+      "category": "dessert",
+      "price": 3200,
+      "image": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=500",
+      "options": [],
+      "isAvailable": false,
+      "description": "달콤한 초콜릿 칩이 가득 박힌 바삭한 쿠키 (현재 품절)"
+    }
+  ],
+  "orders": []
+}

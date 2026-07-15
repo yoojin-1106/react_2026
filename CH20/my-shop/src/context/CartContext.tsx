@@ -60,8 +60,8 @@ export function CartProvider({children} : {children : ReactNode}){
     const value : CartContextValue = {
           items
         , addItem : (product) => dispatch({type : 'ADD', product : product})
-        , removeItem : (productId) => dispatch({type : 'REMOVE', product : product})
-        , setQuantity : (productId, quantity) => dispatch({type : 'SET_QUANTITY', product : product})
+        , removeItem : (productId) => dispatch({type : 'REMOVE', productId : productId})
+        , setQuantity : (productId, quantity) => dispatch({type : 'SET_QUANTITY', productId, quantity})
         , clear : () => dispatch({type : 'CLEAR'})
         , totalCount : items.reduce((sum, it) => sum + it.quantity, 0)
         , totalPrice : items.reduce((sum, it) => sum + (it.product.price * it.quantity), 0)

@@ -2,10 +2,14 @@ import { Link, useParams } from "react-router-dom";
 import { PRODUCTS } from "../data/products";
 import { CATEGORY_LABELS } from "../types";
 import { formatPrice } from "../lib/format";
+import { useCart } from "../hooks/useCart";
 
 export default function ProductDetail(){
     const {id} = useParams<{id : string}>();
-    const product = PRODUCTS.find((p) => p.id === id)
+    const product = PRODUCTS.find((p) => p.id === id);
+    const soldOut = product?.stock === 0;
+    const {addItem} = useCart();
+    //console.log(soldOut);
 
     if(!product){
         return(
@@ -29,6 +33,15 @@ export default function ProductDetail(){
                     <span className="p-rating">{"* " + product.rating}</span>
                     <span className="detail-price">{formatPrice(product.price)}</span>
                     <p>{product.description}</p>
+                    {soldOut ? 
+                    (
+                        <span className="soldout">품절</span>
+                    )
+                    :
+                    (
+                        <button type="button" className="btn btn-primary" onClick={() => addItem(product)} >담기</button>
+                    )
+                    }
                 </div>
             </div>
         </div>

@@ -33,7 +33,7 @@ export default function Cart(){
                     <span className="total">{formatPrice(totalPrice)}</span>
                     <span className="total">총{items.length}건</span>
                 </div>
-                <Link to="/checkout" className="btn btn-primary btn-block">결제하기</Link>
+                <Link to='/checkout' className="btn btn-primary btn-block">결제하기</Link>
                 <button type="button" className="btn btn-ghost" onClick={() => clear()}></button>
             </div>
         </div>

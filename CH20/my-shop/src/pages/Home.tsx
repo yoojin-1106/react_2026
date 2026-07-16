@@ -5,6 +5,7 @@ import { PRODUCTS } from '../data/products'
 import type { Category } from '../types'
 import CategoryFilter from '../components/CategoryFilter'
 import SearchBar from '../components/SearchBar'
+import PromoBanners from '../components/PromoBanners'
 
 export default function Home() {
   const [category, setCategory] = useState<Category | 'all'>('all')
@@ -17,6 +18,7 @@ export default function Home() {
 
   return (
     <div className='container'>
+      <PromoBanners/>
       <div className='page-head'>
           <h1>전체상품</h1>          
       </div>

@@ -1,0 +1,391 @@
+/* 기본 변수 선언 */
+:root {
+  --primary-color: #FF6B00;
+  --primary-light: #FF8A3D;
+  --bg-light: #FFF9F5;
+  --bg-dark: #333333;
+  --border-color: #FFE1CC;
+  --gray-light: #F5F5F5;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Pretendard', -apple-system, sans-serif;
+}
+
+body {
+  background-color: #FAF5F0;
+}
+
+/* 전체 키오스크 컨테이너 */
+.cafe-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* 왼쪽 상품 메뉴 영역 */
+.menu-section {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  background-color: #FFF;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+.cafe-header h1 {
+  color: var(--primary-color);
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+/* 탭 레이아웃 */
+.tab-layout {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 8px;
+}
+
+.tab-item {
+  flex: 1;
+  padding: 14px;
+  border: none;
+  border-radius: 8px 8px 0 0;
+  background-color: var(--gray-light);
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tab-item.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* 상품 그리드 */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.product-card {
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  background: white;
+  box-shadow: 0 4px 6px rgba(255, 107, 0, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 15px rgba(255, 107, 0, 0.15);
+}
+
+.product-image-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 100%; /* 1:1 비율 */
+  background: #f9f9f9;
+}
+
+.product-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-info {
+  padding: 16px;
+  text-align: center;
+}
+
+.product-name {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.product-price {
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 15px;
+}
+
+/* 오른쪽 장바구니 영역 */
+.cart-section {
+  flex: 1.2;
+  background-color: var(--bg-light);
+  border-left: 2px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+}
+
+.cart-section h2 {
+  font-size: 20px;
+  color: #444;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.cart-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.empty-cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #999;
+  font-size: 15px;
+}
+
+.cart-item {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--border-color);
+}
+
+.cart-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cart-item-name {
+  font-weight: bold;
+  color: #333;
+}
+
+.cart-item-option {
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+  width: fit-content;
+}
+
+.cart-item-option.hot {
+  background-color: #FFEAEA;
+  color: #FF4D4D;
+}
+
+.cart-item-option.ice {
+  background-color: #EAF2FF;
+  color: #4D90FF;
+}
+
+.cart-item-price {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+/* 공통 수량 조절 버튼 */
+.quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--gray-light);
+  border-radius: 20px;
+  padding: 4px;
+}
+
+.quantity-control button {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: white;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.quantity-control button:active {
+  background-color: var(--primary-light);
+  color: white;
+}
+
+.quantity-control span {
+  font-weight: bold;
+  min-width: 20px;
+  text-align: center;
+}
+
+.quantity-control.large {
+  padding: 8px;
+  gap: 20px;
+}
+.quantity-control.large button {
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+}
+
+/* 장바구니 푸터 및 결제 버튼 */
+.cart-footer {
+  margin-top: 20px;
+  border-top: 1px dashed var(--border-color);
+  padding-top: 20px;
+}
+
+.total-price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.total-price {
+  font-size: 26px;
+  color: var(--primary-color);
+}
+
+.payment-button {
+  width: 100%;
+  padding: 18px;
+  border: none;
+  border-radius: 12px;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.payment-button:disabled {
+  background-color: #CCC;
+  cursor: not-allowed;
+}
+
+/* 상세 옵션 모달 */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 32px;
+  border-radius: 24px;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  border: none;
+  background: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #999;
+}
+
+.modal-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 16px;
+  border: 4px solid var(--border-color);
+}
+
+.modal-price {
+  color: var(--primary-color);
+  font-size: 20px;
+  font-weight: bold;
+  margin: 8px 0 20px;
+}
+
+.option-section {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.option-section h4 {
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.option-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.option-btn {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  border: 2px solid #EEE;
+  background: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.option-btn.hot.active {
+  border-color: #FF4D4D;
+  background-color: #FFEAEA;
+  color: #FF4D4D;
+}
+
+.option-btn.ice.active {
+  border-color: #4D90FF;
+  background-color: #EAF2FF;
+  color: #4D90FF;
+}
+
+.add-to-cart-btn {
+  width: 100%;
+  padding: 16px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+}

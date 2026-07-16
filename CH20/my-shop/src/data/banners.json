@@ -1,0 +1,30 @@
+[
+  {
+    "id": "b01",
+    "title": "여름 세일 UP TO 30%",
+    "subtitle": "시원한 리빙 · 패션 기획전",
+    "href": "/",
+    "image": "/images/banners/banner-01-summer-sale.png"
+  },
+  {
+    "id": "b02",
+    "title": "5만원 이상 무료배송",
+    "subtitle": "오늘 주문하면 내일 출발",
+    "href": "/cart",
+    "image": "/images/banners/banner-03-free-shipping.png"
+  },
+  {
+    "id": "b03",
+    "title": "이번 주 신상품",
+    "subtitle": "전자기기 · 도서 신규 입고",
+    "href": "/",
+    "image": "/images/banners/banner-05-new-arrivals.png"
+  },
+  {
+    "id": "b04",
+    "title": "20% 할인 쿠폰",
+    "subtitle": "모든 상품에 적용되는 20% 할인 쿠폰",
+    "href": "/",
+    "image": "/images/banners/banner-07-30percent.png"
+  }
+]

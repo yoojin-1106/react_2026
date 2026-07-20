@@ -2,6 +2,7 @@ import CartItemRow from "../components/CartItemRow";
 import { Link } from "react-router-dom";
 import { useCart } from "../hooks/useCart";
 import { formatPrice } from "../lib/format";
+import { useEffect } from "react";
 
 
 
@@ -12,11 +13,18 @@ interface CartProps{
 export default function Cart({ onClose} : CartProps){
     const {items, totalPrice} = useCart();
 
+  
+    if(items.length === 0){
+        console.log(items.length);
+         onClose();
+         
+    }
+
     return(
         <div>
             <div className="quantity-control">
                 {items.map((it) => 
-                    <CartItemRow item={it} onClose={onClose}/>
+                    <CartItemRow item={it} key={it.menuItem.id}/>
                 ) }
             </div>
             <div className="cart-footer">

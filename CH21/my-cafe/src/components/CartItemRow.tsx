@@ -4,18 +4,17 @@ import { formatPrice } from "../lib/format";
 
 interface CartItemProps{
     item : CartItem
-    onClose: () => void;
 }
 
 
-export default function CartItemRow({item, onClose} : CartItemProps){
+export default function CartItemRow({item} : CartItemProps){
     const {setQuantity, removeItem} = useCart();
     const {menuItem, quantity} = item;
     //const addOddItemLogig = setQuantity(product.id, quantity - 1);
 
     return (
         <div className="ccart-list">
-             <img className="thumb" src={menuItem.image} alt={menuItem.name}/>
+            <img className="thumb" src={menuItem.image} alt={menuItem.name}/>
             <div className="info">
                 <div className="product-name">{menuItem.name}</div>
                 <div className="product-price">{menuItem.price}</div>
@@ -30,7 +29,6 @@ export default function CartItemRow({item, onClose} : CartItemProps){
                                 setQuantity(menuItem.id, quantity - 1);
                             } else {
                                 removeItem(menuItem.id);
-                                onClose();
                             }
                         }}
                 > - </button>

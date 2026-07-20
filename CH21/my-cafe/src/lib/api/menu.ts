@@ -1,13 +1,13 @@
 import { delay } from './client'
-import type { Menu } from '../../types'
-import { MENU } from '../../data/cafeDB'
+import type { MenuItem } from '../../types'
+import { menuData } from '../../data/cafeDB'
 
-export async function getMenus(): Promise<Menu[]> {
+export async function getMenus(): Promise<MenuItem[]> {
   await delay(400) 
-  return MENU
+  return menuData
 }
 
-export async function getMenu(id: number): Promise<Menu | null> {
+export async function getMenu(id: number): Promise<MenuItem | null> {
   await delay(300)
-  return MENU.find((p) => p.id === id) ?? null
+  return menuData.find((p) => p.id === id) ?? null
 }

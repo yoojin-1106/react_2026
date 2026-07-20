@@ -1,30 +1,30 @@
 import { createContext, useReducer, type ReactNode } from "react";
-import type { CartItem, CartAction, CartState, Menu } from "../types";
+import type { CartItem, CartAction, MenuItem } from "../types";
 
 function cartReducer(state : CartItem[], action : CartAction) : CartItem[]{
     switch (action.type) {
         case 'ADD':
             {
-                if(action.menu.stock < 1) return state;
+                if(action.menuItem.stock < 1) return state;
 
-                const exists = state.some((it) => it.menu.id === action.menu.id)
+                const exists = state.some((it) => it.menuItem.id === action.menuItem.id)
 
                 if(exists){
-                    return state.map((it) => it.menu.id === action.menu.id ? {...it, quantity : Math.min(it.quantity + 1, it.menu.stock)} : it)
+                    return state.map((it) => it.menuItem.id === action.menuItem.id ? {...it, quantity : Math.min(it.quantity + 1, it.menuItem.stock)} : it)
                 }
 
-                return [...state, {menu : action.menu, quantity : 1}];
+                return [...state, {menuItem : action.menuItem, quantity : 1}];
 
             }
 
         case 'REMOVE':
             {
-                return state.filter((it) => it.menu.id !== action.menuId)
+                return state.filter((it) => it.menuItem.id !== action.menuId)
             }
             
         case 'SET_QUANTITY':
             {
-                return state.map((it) => it.menu.id === action.menuId ? {...it, quantity : Math.min(action.quantity, it.menu.stock) } : it)
+                return state.map((it) => it.menuItem.id === action.menuId ? {...it, quantity : Math.min(action.quantity, it.menuItem.stock) } : it)
             }
         case 'CLEAR':
             {
@@ -36,7 +36,7 @@ function cartReducer(state : CartItem[], action : CartAction) : CartItem[]{
 
 export interface CartContextValue{
     items : CartItem[];
-    addItem : (menu : Menu) => void;
+    addItem : (menuItem : MenuItem) => void;
     removeItem : (menuId : number) => void;
     setQuantity : (menuId : number, quantity : number) => void;
     clear : () => void;
@@ -50,12 +50,12 @@ export function CartProvider({children} : {children : ReactNode}){
     const [items, dispatch] = useReducer(cartReducer, []);
     const value : CartContextValue = {
           items
-        , addItem : (menu) => dispatch({type : 'ADD', menu : menu})
+        , addItem : (menu) => dispatch({type : 'ADD', menuItem : menu})
         , removeItem : (menuId) => dispatch({type : 'REMOVE', menuId : menuId})
         , setQuantity : (menuId, quantity) => dispatch({type : 'SET_QUANTITY', menuId, quantity})
         , clear : () => dispatch({type : 'CLEAR'})
         , totalCount : items.reduce((sum, it) => sum + it.quantity, 0)
-        , totalPrice : items.reduce((sum, it) => sum + (it.menu.price * it.quantity), 0)
+        , totalPrice : items.reduce((sum, it) => sum + (it.menuItem.price * it.quantity), 0)
     }
 
     return(

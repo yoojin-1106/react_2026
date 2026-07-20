@@ -1,16 +1,14 @@
 import { NavLink } from "react-router-dom";
-import { useCart } from "../hooks/useCart";
 import { useAuth } from "../hooks/useAuth";
 
 export default function Navbar(){
-    const {totalCount} = useCart();
     const {user, logout} = useAuth();
 
     return(
         <header className="navbar">
             <nav className="navbar-inner">
                 <NavLink to='/' className="brand">
-                    <img src="/images/orage.png" alt="logo"/>
+                    <img src="/images/orange.png" alt="logo" className="icon"/>
                     작은까페
                 </NavLink>
                 <div className="nav-links">

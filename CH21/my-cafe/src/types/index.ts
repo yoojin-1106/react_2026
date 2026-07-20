@@ -1,4 +1,3 @@
-export type {Menu} from "./menu";
-export type {Category} from "./category"
+export type {MenuItem} from './menu'
 export type {User} from './user'
 export type {CartItem, CartState, CartAction} from './cart'

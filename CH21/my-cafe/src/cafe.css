@@ -163,7 +163,7 @@ span.nav-link:hover {
 
 .tab-item {
  /*  flex: 1; */
-  padding: 14px;
+  padding: 14px 4px 14px 3px ;
   border: none;
   border-radius: 8px 8px 0 0; 
 /*   background-color: var(--gray-light); */
@@ -183,7 +183,7 @@ span.nav-link:hover {
   display: flex;
   list-style: none;
   padding: 0;
-  gap: 8px; /* 버튼 간격 */
+  gap: 1px; /* 버튼 간격 */
 }
 
 /* 탭 버튼 기본 스타일 */
@@ -226,11 +226,43 @@ span.nav-link:hover {
   background: white;
   box-shadow: 0 4px 6px rgba(255, 107, 0, 0.03);
   transition: transform 0.2s, box-shadow 0.2s;
+  height: 410px;
 }
 
 .product-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 15px rgba(255, 107, 0, 0.12);
+}
+
+/* =======================================
+   품절(블럭 처리) 스타일 추가
+======================================= */
+.product-card.disabled {
+  cursor: not-allowed;        /* 금지 표시 커서 */
+  background-color: #f5f5f5;  /* 카드를 회색 톤으로 다운 */
+  opacity: 0.6;               /* 불투명도 낮춤 */
+  position: relative;
+}
+
+/* 품절일 때는 기존 호버 효과(위로 뜨는 등)가 작동하지 않도록 오버라이드 */
+.product-card.disabled:hover {
+  transform: none;
+  box-shadow: 0 4px 6px rgba(255, 107, 0, 0.03); /* 기본 그림자로 고정 */
+}
+
+.product-card.disabled::after {
+  content: "품절";
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  color: #f30404;
+  font-weight: bold;
+  font-size: 1.2rem;
+  z-index: 10;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* 정확한 정중앙 정렬 */
 }
 
 .product-image-wrapper {
@@ -269,6 +301,7 @@ span.nav-link:hover {
 
 .product-price {
   color: var(--primary-color);
+  padding: 4px 4px 0 0;
   font-weight: 700;
   font-size: 15px;
 }
@@ -462,6 +495,15 @@ span.nav-link:hover {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.icon {
+  width: 24px;       /* 원하는 작은 크기 */
+  height: 24px;
+  object-fit: contain; /* 모양 왜곡 방지 */
+  vertical-align: middle; /* 글자와 같이 배치할 때 높이 맞춤 */
+   max-width: 100%; /* 부모 영역을 넘지 않음 */
+  max-height: 100%;  
 }
 
 .page-head h1 {
@@ -695,3 +737,185 @@ span.nav-link:hover {
     font-size: 28px;
   }
 }
+
+/* 1. 트리거 DIV 버튼 */
+.trigger-btn {
+  background-color: #FF7E00; /* 오렌지 메인 컬러 */
+  color: #FFFFFF;
+  padding: 14px 28px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 126, 0, 0.3);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.trigger-btn:hover {
+  background-color: #E67000;
+  transform: translateY(-2px);
+}
+
+/* 2. 어두운 오버레이 (배경 블러) */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 99;
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* 3. 반응형 슬라이드 패널 */
+.slide-panel {
+  position: fixed;
+  top: 0;
+  right: -100%; /* 기본 상태: 화면 오른쪽 바깥에 숨김 */
+  width: 320px; /* PC/태블릿 기본 너비 */
+  max-width: 80%; /* 모바일 대응 */
+  height: 100%;
+  background-color: #FFFFFF; /* 흰색 배경 */
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+  transition: right 0.35s cubic-bezier(0.25, 1, 0.5, 1); /* 부드러운 이징 효과 */
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 패널 활성화 시 화면 안으로 슬라이드 */
+.slide-panel.active {
+  right: 0;
+}
+
+/* 패널 헤더 */
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 20px;
+  background-color: #FF7E00; /* 오렌지 헤더 */
+  color: #FFFFFF;
+}
+
+.panel-header h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* 닫기 버튼 */
+.close-btn {
+  background: none;
+  border: none;
+  color: #FFFFFF;
+  font-size: 1.8rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* 메뉴 리스트 */
+.panel-menu {
+  list-style: none;
+  padding: 20px 0;
+}
+
+.panel-menu li a {
+  display: block;
+  padding: 16px 24px;
+  color: #333333;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+/* 메뉴 호버 시 오렌지 포인트 */
+.panel-menu li a:hover {
+  background-color: #FFF3E6;
+  color: #FF7E00;
+}
+
+/* 옵션 전체 컨테이너 */
+.option-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.option-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #666666;
+}
+
+/* 버튼들을 감싸는 배경 박스 */
+.toggle-group {
+  display: flex;
+  background-color: #fff8f0; /* 연한 주황빛 배경 */
+  border: 1px solid #ffe0c2;
+  border-radius: 10px;
+  padding: 4px;
+  gap: 4px;
+}
+
+/* 기본 버튼 스타일 */
+.toggle-btn {
+  flex: 1;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: transparent;
+  color: #888888;
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+/* 마우스 호버 시 효과 */
+.toggle-btn:hover {
+  color: #333333;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* -----------------------------------
+   선택(Active) 상태 스타일
+----------------------------------- */
+
+/* HOT 선택 시 (주황/레드 계열 포인트) */
+.toggle-btn.hot.active {
+  background-color: #ff7e00; /* 대표 오렌지 컬러 */
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(255, 126, 0, 0.3);
+}
+
+/* ICE 선택 시 (시원한 파스텔 블루 포인트 or 필요시 오렌지로 통일 가능) */
+.toggle-btn.ice.active {
+  background-color: #2b90d9; /* 시원한 아쿠아 블루 */
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(43, 144, 217, 0.3);
+}
+
+/* 💡 만약 ICE도 전체 오렌지 콘셉트로 통일하고 싶다면 아래 주석을 사용하세요 */
+/*
+.toggle-btn.ice.active {
+  background-color: #ff9838;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(255, 152, 56, 0.3);
+}
+*/

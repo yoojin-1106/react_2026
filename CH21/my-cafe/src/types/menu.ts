@@ -9,6 +9,7 @@ export interface MenuItem {
   isAvailable: boolean;
   description: string;
   stock: number;
+  recommend: boolean;
 }
 
 /* 

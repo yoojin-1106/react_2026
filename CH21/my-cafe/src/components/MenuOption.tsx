@@ -22,7 +22,7 @@ export default function MenuOption({ product } : MenuOptionProps) {
             :
            (
             <div className='toggle-group'>
-              <button type='button' className="toggle-btn">{product.options[0]}</button>
+              <button type='button' className="toggle-btn hot active">{product.options[0]}</button>
             </div>  
            ) 
 

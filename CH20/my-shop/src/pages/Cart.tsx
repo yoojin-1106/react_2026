@@ -18,23 +18,23 @@ export default function Cart(){
 
     return(
         <div>
-            <div className="page-head">
+            <div className="">
             <h1>장바구니</h1>
             </div>
-            <div className="stack">
+            <div className="">
                 {items.map((it) => 
                     <CartItemRow key={it.product.id} item={it}/>
                 )
                 }
             </div>
-            <div className="summary">
-                <div className="spread">
+            <div className="cart-footer">
+                <div className="total-price-row">
                     <span>합계</span>
-                    <span className="total">{formatPrice(totalPrice)}</span>
-                    <span className="total">총{items.length}건</span>
+                    <span className="total-price">{formatPrice(totalPrice)}</span>
+                    <span className="total-price">총{items.length}건</span>
                 </div>
-                <Link to='/checkout' className="btn btn-primary btn-block">결제하기</Link>
-                <button type="button" className="btn btn-ghost" onClick={() => clear()}></button>
+                <Link to='/checkout' className="btn payment-button btn-block">결제하기</Link>
+                <button type="button" className="payment-button" onClick={() => clear()}></button>
             </div>
         </div>
 

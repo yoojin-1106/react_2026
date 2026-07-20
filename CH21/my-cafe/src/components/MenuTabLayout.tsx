@@ -35,4 +35,4 @@ export default function MenuTabLayout() {
     </div>
   );
 }
-///`product-card {product.isAvailable === true ? "disabled" : "" }`
+

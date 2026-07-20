@@ -386,81 +386,6 @@ span.nav-link:hover {
   color: var(--primary-color);
 }
 
-/* 수량 조절 공통 */
-.quantity-control {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--gray-light);
-  border-radius: 20px;
-  padding: 4px;
-}
-
-.quantity-control button {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  border: none;
-  background: white;
-  font-weight: bold;
-  font-size: 16px;
-  cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.quantity-control button:active {
-  background-color: var(--primary-light);
-  color: white;
-}
-
-.quantity-control span {
-  font-weight: bold;
-  min-width: 20px;
-  text-align: center;
-}
-
-/* 장바구니 하단 결제단 */
-.cart-footer {
-  margin-top: 20px;
-  border-top: 1px dashed var(--border-color);
-  padding-top: 20px;
-}
-
-.total-price-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  font-weight: bold;
-  font-size: 18px;
-}
-
-.total-price {
-  font-size: 26px;
-  color: var(--primary-color);
-}
-
-.payment-button {
-  width: 100%;
-  padding: 18px;
-  border: none;
-  border-radius: 12px;
-  background-color: var(--primary-color);
-  color: white;
-  font-size: 20px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.payment-button:hover {
-  background-color: var(--orange-hover);
-}
-
-.payment-button:disabled {
-  background-color: #CCC;
-  cursor: not-allowed;
-}
 
 /* ==========================================
    [로그인 양식 스타일 (오렌지&노랑 수정)]
@@ -911,11 +836,162 @@ span.nav-link:hover {
   box-shadow: 0 2px 6px rgba(43, 144, 217, 0.3);
 }
 
-/* 💡 만약 ICE도 전체 오렌지 콘셉트로 통일하고 싶다면 아래 주석을 사용하세요 */
-/*
-.toggle-btn.ice.active {
-  background-color: #ff9838;
-  color: #ffffff;
-  box-shadow: 0 2px 6px rgba(255, 152, 56, 0.3);
+/* 수량 조절 컨테이너 */
+.quantity-control {
+  display: inline-flex;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1.5px solid #ffe3d1;
+  border-radius: 20px;
+  padding: 2px 4px;
+  box-shadow: 0 2px 6px rgba(255, 107, 0, 0.08);
+  user-select: none;
 }
-*/
+
+/* .quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--gray-light);
+  border-radius: 20px;
+  padding: 4px;
+} */
+
+/* 버튼 (+ / -) */
+.quantity-btn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 50%;
+  background-color: #fff4ec;
+  color: #ff6b00;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease-in-out;
+  line-height: 1;
+}
+
+.quantity-btn:hover:not(:disabled) {
+  background-color: #ff6b00;
+  color: #ffffff;
+}
+
+.quantity-btn:active:not(:disabled) {
+  transform: scale(0.92);
+}
+
+.quantity-btn:disabled {
+  background-color: #f5f5f5;
+  color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* 수량 표시 (Span형) */
+.quantity-value {
+  min-width: 36px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  color: #333333;
+}
+
+/* 수량 입력 (Input형 - 직접 입력용) */
+.quantity-input {
+  width: 38px;
+  border: none;
+  background: transparent;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  color: #333333;
+  outline: none;
+}
+
+/* Chrome, Safari, Edge 증감 화살표 제거 */
+.quantity-input::-webkit-outer-spin-button,
+.quantity-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+/* 수량 조절 공통 */
+
+
+.quantity-control button {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: white;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.quantity-control button:active {
+  background-color: var(--primary-light);
+  color: white;
+}
+
+.quantity-control span {
+  font-weight: bold;
+  min-width: 20px;
+  text-align: center;
+}
+
+/* 장바구니 하단 결제단 */
+.cart-footer {
+  margin-top: 20px;
+  border-top: 1px dashed var(--border-color);
+  padding-top: 20px;
+}
+
+.total-price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.total-price {
+  font-size: 26px;
+  color: var(--primary-color);
+}
+
+.payment-button {
+  width: 100%;
+  padding: 18px;
+  border: none;
+  border-radius: 12px;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.payment-button:hover {
+  background-color: var(--orange-hover);
+}
+
+.payment-button:disabled {
+  background-color: #CCC;
+  cursor: not-allowed;
+}
+
+.thumb { 
+  width: 50px; 
+  height: 50px; 
+  border-radius: 10px; 
+  object-fit: cover; 
+  background: #eef0f3;
+ }

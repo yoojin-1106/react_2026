@@ -1,13 +1,13 @@
 import type { MenuItem } from '../types';
-import MenuOption from './MenuOption';
+import Cart from '../pages/Cart';
 
-interface SlidePanelProps{
+interface SlideCartlProps{
     product : MenuItem;
     isOpen: boolean;
     onClose: () => void;
 }
 
-export default function SlidePanel({ isOpen, onClose, product } : SlidePanelProps) {
+export default function SlideCart({ isOpen, onClose, product } : SlideCartlProps) {
 
   return (
     <>
@@ -15,11 +15,11 @@ export default function SlidePanel({ isOpen, onClose, product } : SlidePanelProp
 
       <aside className={`slide-panel ${isOpen ? 'active' : ''}`}>
         <div className="panel-header">
-          <h2 className='product-englishName'>OPTION</h2>
+          <h2 className='product-englishName'>CART</h2>
           <button className="close-btn" onClick={onClose}>&times;</button>
         </div>
         <div className="panel-content">    
-            <MenuOption product={product} key={product.id} onClose={onClose}/>
+           <Cart onClose={onClose}/>
         </div>
       </aside>
     </>

@@ -14,7 +14,7 @@ export default function Navbar(){
                 <div className="nav-links">
                     <NavLink to='/' className="nav-link">
                         홈
-                    </NavLink>
+                    </NavLink>                
                    {user ? 
                    (
                     <>

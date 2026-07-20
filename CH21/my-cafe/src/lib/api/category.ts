@@ -10,4 +10,4 @@ export async function getCategorys(): Promise<Category[]> {
 export async function getCategory(category: string): Promise<Category | null> {
   await delay(300)
   return MENU.find((p) => p.category === category) ?? null
-}
+} 

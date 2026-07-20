@@ -3,10 +3,10 @@ export interface Category {
 }
 
 
-export function describe(category : Category) : string {
+export function describe(category : string) : string {
     //  : string -> return의 type을 지정
     console.log(category)
-/*     switch (category){        
+     switch (category){        
         case 'coffee'  : 
             return '커피';
         case 'tea' : 
@@ -14,7 +14,7 @@ export function describe(category : Category) : string {
         case 'dessert' : 
             return '디저트';
      }
-*/
+
      return '카테고리가 없습니다.'; 
 
 }

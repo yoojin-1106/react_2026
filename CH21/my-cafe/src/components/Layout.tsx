@@ -6,7 +6,7 @@ export default function Layout(){
     return(
         <>
             <Navbar/>
-            <main className="tab-layout">
+            <main className="container">
                 <Outlet/>
             </main>
         </>

@@ -134,13 +134,6 @@ span.nav-link:hover {
 /* ==========================================
    [메인 카페 키오스크 레이아웃]
    ========================================== */
-.cafe-container {
-  display: flex;
-  flex: 1;
-  height: calc(100vh - 65px); /* 네비게이션바 제외한 높이 */
-  width: 100vw;
-  overflow: hidden;
-}
 
 /* 왼쪽 메뉴 영역 */
 .menu-section {
@@ -160,19 +153,20 @@ span.nav-link:hover {
 }
 
 .tab-layout {
-  display: flex;
+ /*  display: flex; */
   gap: 12px;
   margin-bottom: 24px;
   border-bottom: 2px solid var(--border-color);
   padding-bottom: 8px;
+  display: 'grid';
 }
 
 .tab-item {
-  flex: 1;
+ /*  flex: 1; */
   padding: 14px;
   border: none;
-  border-radius: 8px 8px 0 0;
-  background-color: var(--gray-light);
+  border-radius: 8px 8px 0 0; 
+/*   background-color: var(--gray-light); */
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
@@ -184,6 +178,38 @@ span.nav-link:hover {
   color: white;
 }
 
+/* 탭 메뉴 컨테이너 */
+.tab-menu {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  gap: 8px; /* 버튼 간격 */
+}
+
+/* 탭 버튼 기본 스타일 */
+.tab-button {
+  background-color: #ffffff;      /* 하얀 배경 */
+  color: #d35400;                /* 주황색 계열 글자색 (대비) */
+  border: 2px solid #e67e22;      /* 주황색 테두리 */
+  padding: 10px 20px;
+  border-radius: 8px;            /* 살짝 둥근 모서리 */
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+
+/* 호버 시 스타일 */
+.tab-button:hover {
+  background-color: #fff3e0;     /* 마우스 올리면 아주 연한 주황 배경 */
+}
+
+/* 선택된 상태 (active) */
+.tab-button.active {
+  background-color: #e67e22;     /* 주황 배경 */
+  color: #ffffff;                /* 하얀 글자색으로 반전 */
+  border-color: #e67e22;
+}
+
 /* 상품 그리드 & 카드 */
 .product-grid {
   display: grid;
@@ -193,6 +219,7 @@ span.nav-link:hover {
 
 .product-card {
   border: 1px solid var(--border-color);
+  padding: 15px;
   border-radius: 16px;
   overflow: hidden;
   cursor: pointer;
@@ -214,17 +241,19 @@ span.nav-link:hover {
 }
 
 .product-image {
-  position: absolute;
+  /* position: absolute; */
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 150px;
   object-fit: cover;
 }
 
 .product-info {
   padding: 16px;
   text-align: center;
+  font-size: 14px;
+  color: #888;
 }
 
 .product-name {
@@ -232,6 +261,10 @@ span.nav-link:hover {
   font-weight: bold;
   color: #333;
   margin-bottom: 8px;
+}
+
+.product-englishName {
+  color: #666
 }
 
 .product-price {

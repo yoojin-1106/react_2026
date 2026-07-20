@@ -1,16 +1,15 @@
-export interface Menu {
-    id : number;
-    name : string;
-    englishName : string;
-    price : number;
-    category : string;
-    image : string;
-    options : string[];
-    isAvailable : boolean;
-    description : string;
-    stock : number;
+export interface MenuItem {
+  id: number;
+  name: string;
+  englishName: string;
+  category: string;
+  price: number;
+  image: string;
+  options: string[];
+  isAvailable: boolean;
+  description: string;
+  stock: number;
 }
-
 
 /* 
    "id": 114,

@@ -1,10 +1,13 @@
 import type { MenuItem } from '../types';
+import { useCart } from "../hooks/useCart"; 
 
 interface MenuOptionProps {
   product : MenuItem
 }
 
 export default function MenuOption({ product } : MenuOptionProps) {
+
+  const { addItem } = useCart(); 
 
 
  //console.log(product.options.length);
@@ -28,7 +31,7 @@ export default function MenuOption({ product } : MenuOptionProps) {
 
             }
             <div className='cart-footer'>
-                <button type='button' className='btn btn-primary btn-block'>담기</button>
+                <button type='button' className='btn btn-primary btn-block' onClick={() => addItem(product)}>담기</button>
             </div>
           </div>  
         </div>

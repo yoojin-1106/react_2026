@@ -1,0 +1,163 @@
+
+
+.mainContent{
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+
+.pageTitleWrapper{
+  display: flex;
+  align-items: center;
+}
+
+.pageTitleWrapper .left{
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.pageTitle{
+  flex: 1;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--color-text-primary);
+}
+
+
+.fixedBottom{
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  width: 100%;
+  max-width: var(--app-max-width);
+  padding: var(--layout-padding-x);
+  z-index: var(--z-bottom-bar);
+}
+
+
+.fixedBottomInner{
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  width: 100%;
+}
+.fixedBottomInner > button{
+  flex: 1;
+}
+
+
+
+/* align */
+.alignCenter{
+  text-align: center;
+}
+.alignRight{
+  text-align: right;
+}
+.alignLeft{
+  text-align: left;
+}
+
+.jfCenter{
+  justify-content: center;
+}
+
+
+
+/* text */
+
+.messageTitle{
+  font-size: var(--font-size-md);
+  color: var(--color-text-dark);
+}
+
+
+.colorPrimary{
+  color: var(--color-primary);
+}
+
+.colorSecondary{
+  color: var(--color-secondary);
+}
+
+.colorTertiary{
+  color: var(--color-tertiary);
+}
+
+.textDark{
+  color: var(--color-text-dark);
+}
+
+.textLight{
+  color: var(--color-text-light);
+}
+
+.textInfo{
+  color: var(--color-info);
+}
+
+.textWarning{
+  color: var(--color-warning);
+}
+
+.textError{
+  color: var(--color-error);
+}
+
+
+
+
+
+/* textBox */
+.infoBox{
+  padding-left: 20px;
+  color: var(--color-info);
+  background-image: url('/images/icon/icon_info.svg');
+  background-repeat: no-repeat;
+  background-position: 0px 2px;
+}
+
+
+
+/* data */
+.dataWrapper{
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.dataLabel{
+  padding-right: 8px;
+  font-size: var(--font-size-sm);
+}
+.dataValue{
+  font-weight: 700;
+  font-size: var(--font-size-md);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-primary);
+}
+.dataValue + .dataLabel{
+  padding-left: 16px;
+}
+.dataUnit + .dataValue{
+  padding-left: 16px;
+}
+.dataUnit{
+  padding-left: 4px;
+  font-size: var(--font-size-sm);
+}
+.dataSeparator{
+  padding: 0 4px;
+}
+
+.dataWrapper button{
+  margin-left: 10px;
+}
+

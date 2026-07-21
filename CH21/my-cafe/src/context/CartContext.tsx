@@ -10,10 +10,10 @@ function cartReducer(state : CartItem[], action : CartAction) : CartItem[]{
                 const exists = state.some((it) => it.menuItem.id === action.menuItem.id)
 
                 if(exists){
-                    return state.map((it) => it.menuItem.id === action.menuItem.id ? {...it, quantity : Math.min(it.quantity + 1, it.menuItem.stock)} : it)
+                    return state.map((it) => it.menuItem.id === action.menuItem.id ? {...it, quantity : Math.min(it.quantity + 1, it.menuItem.stock), option : ""} : it)
                 }
 
-                return [...state, {menuItem : action.menuItem, quantity : 1}];
+                return [...state, {menuItem : action.menuItem, quantity : 1, option : ""}];
 
             }
 
@@ -24,7 +24,7 @@ function cartReducer(state : CartItem[], action : CartAction) : CartItem[]{
             
         case 'SET_QUANTITY':
             {
-                return state.map((it) => it.menuItem.id === action.menuId ? {...it, quantity : Math.min(action.quantity, it.menuItem.stock) } : it)
+                return state.map((it) => it.menuItem.id === action.menuId ? {...it, quantity : Math.min(action.quantity, it.menuItem.stock), option : "" } : it)
             }
         case 'CLEAR':
             {

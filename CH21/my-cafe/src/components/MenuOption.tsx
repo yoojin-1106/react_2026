@@ -9,10 +9,26 @@ interface MenuOptionProps {
   onClose: () => void;
 }
 
+function getButtonClass(isActive: boolean): string {
+  const classes = ["toggle-btn hot"];
+  console.log(isActive);
+  if (isActive) classes.push("active");
+  return classes.join(" "); // 예: "option-btn active hot"
+}
+
+function getButtonIceClass(isIceActive: boolean): string {
+  const classes = ["toggle-btn ice"];
+  if (isIceActive) classes.push("active");
+  return classes.join(" "); // 예: "option-btn active hot"
+}
+
 export default function MenuOption({ product, onClose } : MenuOptionProps) {
 
-    const { addItem } = useCart(); 
+    const { addItem, setQuantity } = useCart(); 
     const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [isActive, setIsActive] = useState<boolean>(false);
+    const [isIceActive, setIsIceActive] = useState<boolean>(false);
+
 
     // 패널 열기 함수
     const handleOpen = () => {
@@ -24,15 +40,17 @@ export default function MenuOption({ product, onClose } : MenuOptionProps) {
         setIsOpen(false);
     };
 
+
+
     let optionButtons;
 
     if (product.options.length > 1) {
       optionButtons = (
         <div className='toggle-group'>
-          <button type='button' className="toggle-btn hot" onClick={() => {}}>
+          <button type='button' className={getButtonClass(isActive)} id="hot_btn" onClick={() => {setIsIceActive(isIceActive); setIsActive(!isActive);}}>
             {product.options[0]}
           </button>
-          <button type='button' className="toggle-btn ice" onClick={() => {}}>
+          <button type='button' className={getButtonIceClass(isIceActive)} id="ice_btn" onClick={() => {setIsIceActive(!isIceActive); setIsActive(isActive);}}>
             {product.options[1]}
           </button> 
         </div>
@@ -47,9 +65,10 @@ export default function MenuOption({ product, onClose } : MenuOptionProps) {
       );
     }else{
       optionButtons = (
-        <div></div>
+        <div>총 {product.stock}개 남았습니다.</div>
       )
     }
+
 
  //console.log(product.options.length);
   return (
@@ -57,7 +76,7 @@ export default function MenuOption({ product, onClose } : MenuOptionProps) {
          <div className='option-label'>
             {optionButtons}
             <div className='cart-footer'>
-                <button type='button' className='btn btn-primary btn-block' onClick={() => { addItem(product); handleOpen(); onClose();}}>담기</button>
+                <button type='button' className='btn btn-primary btn-block' onClick={() => { addItem(product); handleOpen(); onClose();  }}>담기</button>
             </div>
           </div>  
            <SlideCart isOpen={isOpen} onClose={handleClose} product={product}/>

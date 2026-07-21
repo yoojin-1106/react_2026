@@ -12,7 +12,7 @@ export default function Cart({ onClose} : CartProps){
 
   
     if(items.length === 0){
-        console.log(items.length);
+        //console.log(items.length);
          onClose();
          
     }

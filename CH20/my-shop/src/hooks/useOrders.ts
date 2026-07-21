@@ -28,7 +28,7 @@ export function useOrders(){
 }
 
 export function useOrder(id : string){
-    console.log("useOrder", id);
+    //console.log("useOrder", id);
     const [order, setOrder] = useState<Order | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);

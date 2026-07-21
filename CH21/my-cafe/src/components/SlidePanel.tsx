@@ -7,7 +7,7 @@ interface SlidePanelProps{
     onClose: () => void;
 }
 
-export default function SlidePanel({ isOpen, onClose, product } : SlidePanelProps) {
+export default function SlidePanel({ isOpen, onClose, product} : SlidePanelProps) {
 
   return (
     <>

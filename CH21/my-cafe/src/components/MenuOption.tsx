@@ -3,7 +3,6 @@ import { useCart } from "../hooks/useCart";
 import SlideCart from './SlideCart';
 import { useState } from 'react';
 
-
 interface MenuOptionProps {
   product : MenuItem
   onClose: () => void;
@@ -11,24 +10,22 @@ interface MenuOptionProps {
 
 function getButtonClass(isActive: boolean): string {
   const classes = ["toggle-btn hot"];
-  console.log(isActive);
+  //console.log(isActive);
   if (isActive) classes.push("active");
-  return classes.join(" "); // 예: "option-btn active hot"
+  return classes.join(" "); // 예: "toggle-btn active hot"
 }
 
 function getButtonIceClass(isIceActive: boolean): string {
   const classes = ["toggle-btn ice"];
   if (isIceActive) classes.push("active");
-  return classes.join(" "); // 예: "option-btn active hot"
+  return classes.join(" "); // 예: "toggle-btn active ice"
 }
 
 export default function MenuOption({ product, onClose } : MenuOptionProps) {
-
-    const { addItem, setQuantity } = useCart(); 
+    const { addItem } = useCart(); 
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [isActive, setIsActive] = useState<boolean>(false);
     const [isIceActive, setIsIceActive] = useState<boolean>(false);
-
 
     // 패널 열기 함수
     const handleOpen = () => {
@@ -39,8 +36,6 @@ export default function MenuOption({ product, onClose } : MenuOptionProps) {
     const handleClose = () => {
         setIsOpen(false);
     };
-
-
 
     let optionButtons;
 
@@ -65,7 +60,7 @@ export default function MenuOption({ product, onClose } : MenuOptionProps) {
       );
     }else{
       optionButtons = (
-        <div>총 {product.stock}개 남았습니다.</div>
+        <div></div>
       )
     }
 
@@ -76,7 +71,7 @@ export default function MenuOption({ product, onClose } : MenuOptionProps) {
          <div className='option-label'>
             {optionButtons}
             <div className='cart-footer'>
-                <button type='button' className='btn btn-primary btn-block' onClick={() => { addItem(product); handleOpen(); onClose();  }}>담기</button>
+                <button type='button' className='btn btn-primary btn-block' onClick={() => { addItem(product); handleOpen(); onClose(); }}>담기</button>
             </div>
           </div>  
            <SlideCart isOpen={isOpen} onClose={handleClose} product={product}/>

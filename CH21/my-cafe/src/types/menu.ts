@@ -22,5 +22,6 @@ export interface MenuItem {
       "options": ["HOT", "ICE"],
       "isAvailable": true,
       "description": "달고나의 특유한 맛이 우유 위에 올라가 더욱 맛있어지는 커피라떼".
-      "stock" : 999
+      "stock" : 999,
+      "recommend" : true
 */

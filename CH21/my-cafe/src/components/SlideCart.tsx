@@ -19,7 +19,7 @@ export default function SlideCart({ isOpen, onClose, product } : SlideCartlProps
           <button className="close-btn" onClick={onClose}>&times;</button>
         </div>
         <div className="panel-content">    
-           <Cart onClose={onClose}/>
+           <Cart onClose={onClose} />
         </div>
       </aside>
     </>

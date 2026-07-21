@@ -12,9 +12,8 @@ export function useOrders(){
             setLoading(true);
             setError(null);
             try {
-
-            const data = await getOrders();
-            setOrders(data);
+                const data = await getOrders();
+                setOrders(data);
            } catch (e) {
                 setError(`서버에서 불러오지 못했어요`);
            } finally{
@@ -28,7 +27,7 @@ export function useOrders(){
 }
 
 export function useOrder(id : string){
-    console.log("useOrder", id);
+   // console.log("useOrder", id);
     const [order, setOrder] = useState<Order | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -38,9 +37,8 @@ export function useOrder(id : string){
             setLoading(true);
             setError(null);
             try {
-
-            const data = await getOrder(id);
-            setOrder(data);
+                const data = await getOrder(id);
+                setOrder(data);
            } catch (e) {
                 setError(`서버에서 불러오지 못했어요`);
            } finally{

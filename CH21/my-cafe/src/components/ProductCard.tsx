@@ -38,7 +38,7 @@ export default function ProductCard({product} : ProductCardProps){
                       product.description : product.description.substring(0, 50)+"..."}
                   </span>
             </div>
-            <SlidePanel isOpen={isPanelOpen} onClose={handleClosePanel} product={product}/>
+            <SlidePanel isOpen={isPanelOpen} onClose={handleClosePanel} product={product} />
         </div>
     )
 

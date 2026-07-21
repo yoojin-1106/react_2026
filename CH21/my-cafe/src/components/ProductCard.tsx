@@ -13,7 +13,12 @@ export default function ProductCard({product} : ProductCardProps){
 
     // 패널 열기 함수
     const handleOpenPanel = () => {
-        setIsPanelOpen(true);
+        if(product.isAvailable){
+            setIsPanelOpen(true);
+        }else{
+            alert("죄송합니다, 품절된 상품입니다.");
+            return;
+        }
     };
 
     // 패널 닫기 함수

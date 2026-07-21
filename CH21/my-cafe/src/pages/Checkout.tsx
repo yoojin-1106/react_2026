@@ -23,7 +23,7 @@ export default function Checkout(){
         //console.log(`Checkout 2`);
         return(
             <EmptyState message="장바구니가 비어있어 결제할 수 없어요">
-                <Link to="/">홈으로가서 쇼핑하기</Link>
+                <Link to="/">처음으로 가기</Link>
             </EmptyState>
         )   
 
@@ -60,9 +60,6 @@ export default function Checkout(){
                     <input type="tel" id="nickname" name="nickname" value={form.nickname} onChange={(e) => setForm((prev) => ({...prev, nickname : e.target.value}))}/>
                 </div>
                 
-                <div className="summary">
-                    <span className="total">{formatPrice(totalPrice)}</span>
-                </div>
 
                 {error && 
                     <p className="error-box">{error}</p>

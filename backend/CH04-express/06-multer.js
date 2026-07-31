@@ -41,27 +41,32 @@ const upload = multer({
 
 app.post('/upload', upload.single('image'), (req, res) => {
     console.log(req.file);
-    console.log(req.body);
+    // console.log(req.body);
     res.json({sucess : true})
 });
+// app.post('/upload', upload.single('imge')); => 이미지 저장까지 완료해 준다 'imge' 는  key값이 된다.
+// app.post('/upload', (req, res) => {}); => 상단 한줄을 이렇게 두줄로 나누어서 작성할 수 있다. 둘다 조건이 (method가 같음) 같아서 순서대로 실행 된다.
 
 app.post('/uploadfiles', upload.fields([{name : 'image'}, {name : 'file'}]))
 app.post('/uploadfiles', (req, res) => {
     console.log(req.files);
-    console.log(req.body, req.body.name);
+    //console.log(req.body, req.body.name);
     res.send('OK');
 });
 
 app.post('/upload_images', upload.array('image'));
 app.post('/upload_images', (req, res) => {
-    console.log(req.files);
+    //console.log(req.files);
     //console.log(req.body, req.body.name);
     res.send('OK');
 })
 
-// app.post('/upload', upload.single('imge')); => 이미지 저장까지 완료해 준다 'imge' 는  key값이 된다.
-// app.post('/upload', (req, res) => {}); => 상단 한줄을 이렇게 두줄로 나누어서 작성할 수 있다. 둘다 조건이 (method가 같음) 같아서 순서대로 실행 된다.
-
+app.get('/image', (req, res) => {
+    const filename = req.query.filename;
+    //console.log(filename);
+    //console.log(process.cwd());
+    return res.sendFile(process.cwd() + '/files/' + filename);
+})
 
 
 app.listen(port, () => console.log(`Server start at ${port}`));

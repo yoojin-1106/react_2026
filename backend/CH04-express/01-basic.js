@@ -1,7 +1,12 @@
 const express = require('express');
+//console.log(express);
 const app = express();
+//console.log(app);
 const port = 3000;
 
+
+
+//console.log(app.use(express.json()));
 // (property) Application<Record<string, any>>.get: (name: string) => any (+5 overloads)
 app.get('/', (request, response) => {
     response.json({success : true})

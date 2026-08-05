@@ -58,6 +58,78 @@ router.get('/', (req, res) => {
     })
 })
 
+
+router.route('/:bno')
+    .get((req, res) => {
+        const sql = `select * from book where bno = ${bno}`;
+        con.query(sql, (error, rows) => {
+            let result = {};
+            if(error){
+                result = {
+                      success : false
+                    , book : []
+                    , message : error.message
+                };
+            }else{
+                result = {
+                      success : true
+                    , book : rows
+                    , message : '성공했습니다.'
+                };
+            }
+            res.send(result);
+        })
+    })
+    .put((req, res) => {
+        const bno = req.params.bno;
+        const book = req.body;
+        
+        const sql = `update book set title = ?, author = ? where bno = ${bno} `;
+        const params = [
+              book.title
+            , book.author
+        ]
+        con.query(sql, params, (error) => {
+            let result = {};
+        
+            if(error){
+                result = {
+                      success : false
+                    , data : book
+                    , message : error.message
+                }
+            }else{
+                result = {
+                      success : true
+                    , data : book
+                    , message : '수정되었습니다.'
+                }
+            }
+            res.json(result);
+        })
+    })
+    .delete((req, res) => {
+        const sql = `delete from book where bno = ${bno} `;
+
+        con.query(sql, (error) => {
+            let result = {};
+            if(error){
+                result = {
+                      success : false
+                    , message : error.message
+                }
+            }else{
+                result = {
+                      success : true
+                    , message : '삭제되었습니다.'
+                }
+            }
+            res.json(result);
+        })
+    })
+
+
+/* 
 router.put('/:bno', (req, res) => {
     const bno = req.params.bno;
     const book = req.body;
@@ -109,6 +181,6 @@ router.delete('/:bno', (req, res) => {
         }
         res.json(result);
     })
-})
+}) */
 
 module.exports = router;

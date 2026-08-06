@@ -22,7 +22,7 @@ class Car extends Model {
     }
 
     static associate(db){
-        
+        db.Car.belongsTo(db.Student);
     }
 }
 

@@ -56,6 +56,22 @@ class Student extends Model {
       }
       db.Student.belongsToMany(db.Book, {through : 'rental'});
 
+      db.Student.hasMany(db.Car, {
+              foreignKey : {name : 'studentId', allowNull : false}
+            , sourceKey : 'id'
+            , as : 'cars'
+            , onDelete : 'CASCADE'
+                        //   SET NULL
+                        // , RESTRICT : 삭제 안됨
+                        // , CASCADE : 순차적으로 삭제
+      });
+      // (property) foreignKey: string, 
+      // (property) targetKey: string, 
+      // (property) sourceKey: string, 
+      // (property) as: any, 
+      // (property) onDelete: string
+      // 
+      // 결과를 던저줄때 json명명 cars
     }
 }
 

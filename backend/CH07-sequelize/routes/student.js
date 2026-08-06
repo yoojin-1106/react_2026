@@ -1,6 +1,5 @@
 const router = require('express').Router();
-const { urlencoded } = require('express');
-const { Student } = require('../models');
+const { Student, Car } = require('../models');
 const { count } = require('../models/Student');
 // 전체 함수(Student) 밑에 있는 요소들을 매소드 라고 한다. .create, .findAndCountAll 등등..
 
@@ -73,5 +72,23 @@ router.route('/:id')
             res.status(500).json({success : false, message : error.message});
         }
     })
+
+router.get('/:id/car', async (req, res) => {
+    try {
+        const id = req.params.id;
+        const document = await Student.findByPk(id, {include : [{model : Car, as: 'cars'}]});
+
+        if(!document){
+            res.status(404).json({success : false, document : [], message : '학생이 없습니다.'});
+        }
+
+        console.log(document);
+        
+
+        res.status(200).json({success : true, document, message : '조회되었습니다.'});
+    } catch (error) {
+        res.status(500).json({success : false, document : [], message : error.message});
+    }
+})
 
 module.exports = router;

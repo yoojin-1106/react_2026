@@ -1,11 +1,12 @@
-const {Model, DataTypes} = require('sequelize');
+const {Model, DataTypes, ForeignKeyConstraintError} = require('sequelize');
 
 class Car extends Model {
     static initate(sequelize){
         return super.init(
            {
                 model : {
-                    type : DataTypes.STRING(100)                   
+                      type : DataTypes.STRING(100)
+                    , allowNull : false              
                 }
            },
            {
@@ -21,7 +22,7 @@ class Car extends Model {
     }
 
     static associate(db){
-
+        
     }
 }
 

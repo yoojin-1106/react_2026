@@ -39,17 +39,20 @@ Object.keys(db).forEach(modelName => {
 
 const Student = require('./Student');
 const Book = require('./Book');
-//const Car = require('./Car');
+const Car = require('./Car');
 
 db.Student = Student;
 db.Book = Book;
+db.Car = Car;
 
 Student.initate(sequelize);
 // Student에 sequelize를 전달해준다
 Book.initate(sequelize);
+Car.initate(sequelize);
 
 Student.associate(db);
 Book.associate(db);
+Car.associate(db);
 
 db.sequelize = sequelize;
 //객체

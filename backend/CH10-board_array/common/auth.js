@@ -1,5 +1,6 @@
 //const auth = (req, res, next) => {} / module.exports = auth;
 // function auth(req, res, next){}  /  module.exports = auth;
+//미들웨어함수 middleware function
 
 const jwt = require('jsonwebtoken');
 const secret = '1234';

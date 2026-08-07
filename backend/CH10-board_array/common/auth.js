@@ -22,6 +22,7 @@ module.exports =  (req, res, next) => {
 
     try {
         const {email} = jwt.verify(token, secret);
+        // payload 반환 *****
         req.email = email;
         next();
     } catch (error) {

@@ -1,0 +1,30 @@
+CH10-board_array
+게시판 만들 때 필요한 것
+- 회원가입
+- 로그인  
+- post - crud
+
+만드는 순서 
+1. 상위 폴더 만듬
+2. 터미널열고, 라이브러리 설치
+	npx express-generator --no-view --git
+	npm i
+	npm i bcrypt jsonwebtoken
+순서대로 진행
+
+3. app.js 삭제하고 새로 작성
+	끝
+
+
+
+
+
+
+
+
+
+
+
+
+
+

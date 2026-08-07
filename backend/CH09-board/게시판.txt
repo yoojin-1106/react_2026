@@ -1,0 +1,60 @@
+게시판 만들 때 필요한 것
+- 회원가입
+- 로그인  
+- post - crud
+
+만드는 순서 
+1. 상위 폴더 만듬
+2. 터미널열고, 라이브러리 설치
+	npx express-generator --no-view --git
+	npm i
+	npm i sequelize sequelize-cli mysql2
+	npx sequelize init 
+순서대로 진행
+
+3. config.json에서 db정보를 수정한다.
+{
+  "development": {
+    "username": "root",
+    "password": "0000", -> 본인DB비밀번호
+    "database": "board",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+
+4. ./models/index.js 에서 필요없는것을 지운다.
+fs
+  .readdirSync(__dirname)
+  .filter(file => {
+    return (
+      file.indexOf('.') !== 0 &&
+      file !== basename &&
+      file.slice(-3) === '.js' &&
+      file.indexOf('.test.js') === -1
+    );
+  })
+  .forEach(file => {
+    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
+    db[model.name] = model;
+  });
+
+Object.keys(db).forEach(modelName => {
+  if (db[modelName].associate) {
+    db[modelName].associate(db);
+  }
+});
+
+
+5. model 2개를 만든다.
+
+
+
+
+
+
+
+
+
+
+
+

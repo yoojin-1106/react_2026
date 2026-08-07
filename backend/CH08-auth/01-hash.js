@@ -22,8 +22,8 @@ console.log(`result2 => ${result2}`);
 
 //나중엔 비동기로 할거임 이런 형식으로
 (async () => {
-    const hashed1 = await bcrypt.hashSync(password, saltRound);
-    const result1 = await bcrypt.compareSync(password, hashed);
+    const hashed1 = await bcrypt.hash(password, saltRound);
+    const result1 = await bcrypt.compare(password, hashed);
     console.log(`hashed1 => ${hashed1}, result1 => ${result1}`);
     // $2b$10$vEE.lBezyXGdV/3gZn1l2.mKrW.M/pMiCpyBfxLCwUhZk9wbsnxyC, result1 => true 
     // $2b$10$Bp765cG6uU6EqWkMPGId3.SuVREDqcHR6XQUSyKINoigGF1iBXOOG

@@ -1,12 +1,12 @@
 //const auth = (req, res, next) => {} / module.exports = auth;
 // function auth(req, res, next){}  /  module.exports = auth;
 
+const jwt = require('jsonwebtoken');
+const secret = '1234';
 
 //토큰
 module.exports =  (req, res, next) => {
     
-    const jwt = require('jsonwebtoken');
-    const secret = '1234';
     const headers = req.headers.authorization || '';
     //Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InF3ZXJAZGRkZC5jb20iLCJpYXQiOjE3ODYwNzIwNjAsImV4cCI6MTc4NjA3NTY2MH0.rjGhwGol2KHA8uCbb5YaoSLdWBWEWM4GGCF8t9KM9SE
     //token
